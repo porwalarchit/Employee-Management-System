@@ -45,7 +45,8 @@ public class UserRestController {
 
         System.out.println(userService.isEmailExists(userCredentials.getEmail()));
         if(userService.isEmailExists(userCredentials.getEmail())){
-            User udb = userService.findByEmail(userCredentials.getEmail());
+            User udb = userService.findUserByEmail(userCredentials.getEmail());
+            System.out.println(udb.toString());
 //            System.out.println(userService.findUserByEmail(userCredentials.getEmail()));
         }
         throw new UserNotExists("User Not found!!");

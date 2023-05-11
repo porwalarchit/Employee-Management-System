@@ -22,7 +22,7 @@ public class User {
     private String lastName;
 
     @NotBlank(message = "Please Enter Email")
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
 
     @NotBlank(message = "Please Enter password")
@@ -82,5 +82,14 @@ public class User {
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
