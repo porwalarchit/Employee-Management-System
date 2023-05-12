@@ -13,20 +13,20 @@ public class User {
     private int id;
 
 //    @Nonnull(message="Enter your first name")
-    @NotBlank(message = "Please Enter first name")
     @Column(name="first_name")
+    @NotBlank(message = "Please Enter first name")
     private String firstName;
 
-    @NotBlank(message = "Please Enter last name")
     @Column(name = "last_name")
+    @NotBlank(message = "Please Enter last name")
     private String lastName;
 
-    @NotBlank(message = "Please Enter Email")
     @Column(name = "email",unique = true)
+    @NotBlank(message = "Please Enter Email")
     private String email;
 
-    @NotBlank(message = "Please Enter password")
     @Column(name = "password")
+    @NotBlank(message = "Please Enter password")
     private String password;
 
     // define constructors

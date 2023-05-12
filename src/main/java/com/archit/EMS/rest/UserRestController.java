@@ -26,14 +26,15 @@ public class UserRestController {
 
     @PostMapping("/signup")
     public User addUser(@RequestBody User theUser){
-        System.out.println(theUser.getEmail());
+//        System.out.println(theUser.getEmail());
         String dbUserEmail = theUser.getEmail();
-        System.out.println(userService.isEmailExists(dbUserEmail));
+//        System.out.println(userService.isEmailExists(dbUserEmail));
 
         if(userService.isEmailExists(dbUserEmail)){
             String s = "User already exists";
             throw new UserAlreadyExistsException("User already exists, try login first!!");
         }
+
         User newUser =  userService.save(theUser);
         return newUser;
     }
