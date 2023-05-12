@@ -41,14 +41,16 @@ public class UserRestController {
 
     @PostMapping("/login")
     public String userLogin(@RequestBody UserCredentials userCredentials){
-        System.out.println(userCredentials.getEmail());
-        System.out.println(userCredentials.getPassword());
 
         System.out.println(userService.isEmailExists(userCredentials.getEmail()));
         if(userService.isEmailExists(userCredentials.getEmail())){
-            User udb = userService.findUserByEmail(userCredentials.getEmail());
-            System.out.println(udb.toString());
-//            System.out.println(userService.findUserByEmail(userCredentials.getEmail()));
+            User user = userService.findUserByEmail(userCredentials.getEmail());
+            System.out.println(user.getPassword().equals(userCredentials.getPassword()));
+            if (user != null && (user.getPassword().equals(userCredentials.getPassword())) ) {
+                return "Login successful";
+            } else {
+                return "Invalid username or password";
+            }
         }
         throw new UserNotExists("User Not found!!");
     }
