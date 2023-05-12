@@ -3,6 +3,7 @@ package com.archit.EMS.service;
 import com.archit.EMS.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     List<User> findAll();
@@ -11,6 +12,6 @@ public interface UserService {
 
     User save(User theUser);
 
-    User findUserByEmail(String email);
+    Optional<User> findUserByEmail(String email);
 
 }

@@ -39,19 +39,18 @@ public class UserRestController {
         return newUser;
     }
 
-    @PostMapping("/login")
-    public String userLogin(@RequestBody UserCredentials userCredentials){
-
-        System.out.println(userService.isEmailExists(userCredentials.getEmail()));
-        if(userService.isEmailExists(userCredentials.getEmail())){
-            User user = userService.findUserByEmail(userCredentials.getEmail());
-            System.out.println(user.getPassword().equals(userCredentials.getPassword()));
-            if (user != null && (user.getPassword().equals(userCredentials.getPassword())) ) {
-                return "Login successful";
-            } else {
-                return "Invalid username or password";
-            }
-        }
-        throw new UserNotExists("User Not found!!");
-    }
+//    @PostMapping("/login")
+//    public String userLogin(@RequestBody UserCredentials userCredentials){
+//        System.out.println(userService.isEmailExists(userCredentials.getEmail()));
+//        if(userService.isEmailExists(userCredentials.getEmail())){
+//            User user = userService.findUserByEmail(userCredentials.getEmail());
+//            System.out.println(user.getPassword().equals(userCredentials.getPassword()));
+//            if (user != null && (user.getPassword().equals(userCredentials.getPassword())) ) {
+//                return "Login successful";
+//            } else {
+//                return "Invalid username or password";
+//            }
+//        }
+//        throw new UserNotExists("User Not found!!");
+//    }
 }
