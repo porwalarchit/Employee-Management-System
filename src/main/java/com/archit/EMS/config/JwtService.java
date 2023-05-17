@@ -1,4 +1,4 @@
-package com.archit.EMS.service;
+package com.archit.EMS.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,7 +17,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private static final String SECRET_KEY = "&F)J@NcRfUjWnZr4u7x!A%D*G-KaPdSg";
+    private static final String SECRET_KEY = "5267556B58703273357638792F423F4528482B4D6250655368566D5971337436";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -41,18 +41,9 @@ public class JwtService {
               .setClaims(extraClaims)
               .setSubject(userDetails.getUsername())
               .setIssuedAt(new Date(System.currentTimeMillis()))
-              .setExpiration(new Date(System.currentTimeMillis() + 1000*60*24))
+              .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
               .signWith(getSignInKey(), SignatureAlgorithm.HS256)
               .compact();
-    }
-
-    private Claims extractAllClaims(String token){
-        return Jwts.
-                parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails){
@@ -66,6 +57,15 @@ public class JwtService {
 
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
+    }
+
+    private Claims extractAllClaims(String token){
+        return Jwts.
+                parserBuilder()
+                .setSigningKey(getSignInKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     private Key getSignInKey() {

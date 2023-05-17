@@ -1,4 +1,4 @@
-package com.archit.EMS.dao;
+package com.archit.EMS.repository;
 
 import com.archit.EMS.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
