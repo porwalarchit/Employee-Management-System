@@ -8,7 +8,7 @@ public interface UserService {
     List<User> findAllUsers();
 
     User saveUser(User theUser);
-//
-//    Optional<User> findUserByEmail(String email);
+
+    User findUserByEmail(String email);
 
 }
