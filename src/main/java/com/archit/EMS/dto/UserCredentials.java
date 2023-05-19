@@ -1,4 +1,4 @@
-package com.archit.EMS.rest;
+package com.archit.EMS.dto;
 
 public class UserCredentials {
     private String email;
@@ -12,8 +12,7 @@ public class UserCredentials {
         this.password = password;
     }
 
-    // Getters and setters
-
+    // Getters
     public String getEmail() {
         return email;
     }

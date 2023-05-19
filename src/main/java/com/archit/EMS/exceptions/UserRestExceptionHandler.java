@@ -1,4 +1,4 @@
-package com.archit.EMS.rest;
+package com.archit.EMS.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

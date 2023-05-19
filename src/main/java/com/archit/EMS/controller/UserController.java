@@ -1,14 +1,22 @@
 package com.archit.EMS.controller;
 
+import com.archit.EMS.dto.UserCredentials;
 import com.archit.EMS.entity.User;
 import com.archit.EMS.repository.UserRepository;
+import com.archit.EMS.service.JwtService;
 import com.archit.EMS.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
-
 
 @RestController
 @RequestMapping("/api")
@@ -17,25 +25,53 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private UserRepository userRepository;
+    private JwtService jwtService;
 
-    @GetMapping("/auth")
-    public ResponseEntity<String> sayHello(){
-        return ResponseEntity.ok("Hello from secured endpoint.");
-    }
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/test")
-    public String savHello(){
+    public String sayHello(){
         return "Hello World!!";
     }
 
-    @PostMapping("/user")
+    @PostMapping("/adduser")
     public User saveUser(@RequestBody User theUser){
-        System.out.println(theUser);
-
-        User newUser =  userService.saveUser(theUser);
+//        System.out.println(theUser);
+        User user = new User(
+                theUser.getFirstName(),
+                theUser.getLastName(),
+                theUser.getEmail(),
+                passwordEncoder.encode(theUser.getPassword()),
+                theUser.getRoles()
+        );
+        User newUser =  userService.saveUser(user);
         return newUser;
     }
+
+    @GetMapping("/findAllUsers")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('SUPERADMIN')")
+    public List<User> findAllUsers() {
+        return userService.findAllUsers();
+    }
+
+
+    @PostMapping("/authenticate")
+    public String authenticateAndGetToken(@RequestBody UserCredentials userCredentials){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userCredentials.getEmail(), userCredentials.getPassword()));
+        if (authentication.isAuthenticated()) {
+            return jwtService.generateToken(userCredentials.getEmail());
+        } else {
+            throw new UsernameNotFoundException("invalid user request !");
+        }
+    }
+
+
+
+
 //    @PostMapping("/signup")
 //    public User addUser(@RequestBody User theUser){
 ////        System.out.println(theUser.getEmail());

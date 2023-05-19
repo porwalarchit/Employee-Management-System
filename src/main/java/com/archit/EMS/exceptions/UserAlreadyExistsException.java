@@ -1,4 +1,4 @@
-package com.archit.EMS.rest;
+package com.archit.EMS.exceptions;
 
 public class UserAlreadyExistsException extends RuntimeException{
     public UserAlreadyExistsException(String message) {
