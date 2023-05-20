@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ec5bbf0f-8a32-450f-9e00-216154f9b4b0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS-frontend/tsconfig.spec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/EmsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/EmsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/config/UserInfoUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/config/UserInfoUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/config/UserInfoUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/config/UserInfoUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/dto/UserCredentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/dto/UserCredentials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/exceptions/UserAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/exceptions/UserAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/exceptions/UserErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/exceptions/UserErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/exceptions/UserNotExists.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/exceptions/UserNotExists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/exceptions/UserRestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/exceptions/UserRestExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/filter/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/service/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/archit/EMS/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/java/com/archit/EMS/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/archit/EMS/EmsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/EMS-backend/src/test/java/com/archit/EMS/EmsApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="98807b36-7da1-4cfd-939f-7013d6330494" />
+        <option name="url" value="git@github.com:porwalarchit/Employee-Management-System.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PgLjDpXotvP8exQ66usrEv6Bf6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.archit.EMS.entity" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="EmsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.archit.EMS.EmsApplication" />
+      <module name="EMS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.archit.EMS.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.EmsApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec5bbf0f-8a32-450f-9e00-216154f9b4b0" name="Changes" comment="" />
+      <created>1683873911879</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683873911879</updated>
+    </task>
+    <servers />
+  </component>
+</project>
