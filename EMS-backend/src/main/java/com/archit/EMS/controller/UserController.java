@@ -1,11 +1,13 @@
 package com.archit.EMS.controller;
 
+import com.archit.EMS.dto.TokenResponse;
 import com.archit.EMS.dto.UserCredentials;
 import com.archit.EMS.entity.User;
 import com.archit.EMS.repository.UserRepository;
 import com.archit.EMS.service.JwtService;
 import com.archit.EMS.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class UserController {
     @Autowired
@@ -60,10 +63,10 @@ public class UserController {
 
 
     @PostMapping("/authenticate")
-    public String authenticateAndGetToken(@RequestBody UserCredentials userCredentials){
+    public ResponseEntity<TokenResponse> authenticateAndGetToken(@RequestBody UserCredentials userCredentials){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userCredentials.getEmail(), userCredentials.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(userCredentials.getEmail());
+            return new ResponseEntity<TokenResponse>(new TokenResponse(jwtService.generateToken(userCredentials.getEmail())), HttpStatus.OK) ;
         } else {
             throw new UsernameNotFoundException("invalid user request !");
         }
