@@ -4,6 +4,7 @@ import com.archit.EMS.filter.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -33,21 +34,24 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http
-        .csrf()
-        .disable()
-        .authorizeHttpRequests()
-        .requestMatchers("/api/adduser", "/api/authenticate")
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
+        http.cors().and().csrf().disable().authorizeHttpRequests(configurer->
+                configurer
+                        .requestMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/findAllUsers").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/adduser").hasAnyRole("SUPERADMIN", "ADMIN")
+                        )
+//                .authorizeRequests()
+//                .antMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
         .sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
         .authenticationProvider(authenticationProvider())
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
+//        http.csrf().disable();
+        http.httpBasic();
         return http.build();
     }
 

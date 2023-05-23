@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/adduser")
-    @PreAuthorize("hasAuthority('SUPERADMIN') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('SUPERADMIN') or hasAuthority('ADMIN')")
     public User saveUser(@RequestBody User theUser){
 //        System.out.println(theUser);
         User user = new User(
@@ -57,12 +57,13 @@ public class UserController {
     }
 
     @GetMapping("/findAllUsers")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('SUPERADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('SUPERADMIN')")
     public List<User> findAllUsers() {
         return userService.findAllUsers();
     }
 
 
+//    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/authenticate")
     public ResponseEntity<TokenResponse> authenticateAndGetToken(@RequestBody UserCredentials userCredentials){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userCredentials.getEmail(), userCredentials.getPassword()));
