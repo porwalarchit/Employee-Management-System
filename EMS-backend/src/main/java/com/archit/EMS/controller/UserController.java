@@ -42,6 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/adduser")
+    @PreAuthorize("hasAuthority('SUPERADMIN') or hasAuthority('ADMIN')")
     public User saveUser(@RequestBody User theUser){
 //        System.out.println(theUser);
         User user = new User(

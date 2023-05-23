@@ -7,13 +7,13 @@ export class JwtService {
   private decodedData: any;
 
   storeDecodedData(decodedToken: any) {
+    console.log("Stored data: ", this.decodedData);
     this.decodedData = decodedToken;
-    // console.log(this.decodedData);
     
   }
 
   getDecodedData(): any {
-    // console.log(this.decodedData);
+    console.log("Get data: ", this.decodedData);
     return this.decodedData;
   }
 }

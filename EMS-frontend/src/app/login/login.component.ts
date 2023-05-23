@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoginService } from '../service/login.service';
-import {jwt} from 'jsonwebtoken';
 import jwt_decode from 'jwt-decode';
 import { JwtService } from '../service/jwt.service';
 import { Router } from '@angular/router';
@@ -22,7 +21,7 @@ export class LoginComponent {
 
 
   onSubmitLogin(){
-    console.log(this.loginForm.value.email, this.loginForm.value.password);
+    // console.log(this.loginForm.value.email, this.loginForm.value.password);
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((res)=>{
       const jwtToken  = res["token"];
       const decodedToken = jwt_decode(jwtToken);
