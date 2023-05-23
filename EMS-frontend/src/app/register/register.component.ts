@@ -37,7 +37,7 @@ export class RegisterComponent {
       lastName: this.registerForm.value.lastName,
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
-      roles: this.registerForm.value.roles,
+      roles: "ROLE_"+this.registerForm.value.roles,
     }
 
     this.http.post('http://localhost:8080/api/adduser', newUser ,{headers})
