@@ -38,29 +38,24 @@ public class EmployeeController {
         return "Hello World!!";
     }
 
-    @PostMapping("/adduser")
-//    @PreAuthorize("hasAuthority('SUPERADMIN') or hasAuthority('ADMIN')")
-    public Employee saveUser(@RequestBody Employee theEmployee){
-//        System.out.println(theUser);
-        Employee employee = new Employee(
-                theEmployee.getFirstName(),
-                theEmployee.getLastName(),
-                theEmployee.getEmail(),
-                passwordEncoder.encode(theEmployee.getPassword()),
-                theEmployee.getRoles()
-        );
-        Employee newEmployee =  employeeService.saveEmployee(employee);
-        return newEmployee;
-    }
+//    @PostMapping("/addEmployee")
+//    public Employee saveEmployee(@RequestBody Employee theEmployee){
+//        Employee employee = new Employee(
+//                theEmployee.getFirstName(),
+//                theEmployee.getLastName(),
+//                theEmployee.getEmail(),
+//                passwordEncoder.encode(theEmployee.getPassword()),
+//                theEmployee.getRoles()
+//        );
+//        Employee newEmployee =  employeeService.saveEmployee(employee);
+//        return newEmployee;
+//    }
 
-    @GetMapping("/findAllUsers")
-//    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('SUPERADMIN')")
-    public List<Employee> findAllUsers() {
+    @GetMapping("/findAllEmployees")
+    public List<Employee> findAllEmployees() {
         return employeeService.findAllEmployees();
     }
 
-
-//    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/authenticate")
     public ResponseEntity<TokenResponse> authenticateAndGetToken(@RequestBody EmployeeCredentials employeeCredentials){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(employeeCredentials.getEmail(), employeeCredentials.getPassword()));

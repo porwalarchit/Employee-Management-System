@@ -37,8 +37,8 @@ public class SecurityConfig {
         http.cors().and().csrf().disable().authorizeHttpRequests(configurer->
                 configurer
                         .requestMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/findAllUsers").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/api/adduser").hasAnyRole("SUPERADMIN", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/findAllEmployees").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/addEmployee").hasAnyRole("SUPERADMIN", "ADMIN")
                         )
 //                .authorizeRequests()
 //                .antMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
