@@ -1,7 +1,7 @@
 package com.archit.EMS.controller;
 
 import com.archit.EMS.dto.TokenResponse;
-import com.archit.EMS.dto.UserCredentials;
+import com.archit.EMS.dto.EmployeeCredentials;
 import com.archit.EMS.entity.Employee;
 import com.archit.EMS.service.JwtService;
 import com.archit.EMS.service.EmployeeService;
@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
-public class UserController {
+public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
@@ -62,10 +62,10 @@ public class UserController {
 
 //    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/authenticate")
-    public ResponseEntity<TokenResponse> authenticateAndGetToken(@RequestBody UserCredentials userCredentials){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userCredentials.getEmail(), userCredentials.getPassword()));
+    public ResponseEntity<TokenResponse> authenticateAndGetToken(@RequestBody EmployeeCredentials employeeCredentials){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(employeeCredentials.getEmail(), employeeCredentials.getPassword()));
         if (authentication.isAuthenticated()) {
-            return new ResponseEntity<TokenResponse>(new TokenResponse(jwtService.generateToken(userCredentials.getEmail())), HttpStatus.OK) ;
+            return new ResponseEntity<TokenResponse>(new TokenResponse(jwtService.generateToken(employeeCredentials.getEmail())), HttpStatus.OK) ;
         } else {
             throw new UsernameNotFoundException("invalid user request !");
         }

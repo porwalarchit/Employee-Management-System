@@ -1,13 +1,13 @@
 package com.archit.EMS.exceptions;
 
-public class UserErrorResponse {
+public class EmployeeErrorResponse {
     private int status;
     private String message;
 
-    public UserErrorResponse() {
+    public EmployeeErrorResponse() {
     }
 
-    public UserErrorResponse(int status, String message) {
+    public EmployeeErrorResponse(int status, String message) {
         this.status = status;
         this.message = message;
     }

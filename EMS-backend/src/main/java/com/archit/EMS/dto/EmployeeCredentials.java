@@ -1,13 +1,13 @@
 package com.archit.EMS.dto;
 
-public class UserCredentials {
+public class EmployeeCredentials {
     private String email;
     private String password;
 
-    public UserCredentials() {
+    public EmployeeCredentials() {
     }
 
-    public UserCredentials(String email, String password) {
+    public EmployeeCredentials(String email, String password) {
         this.email = email;
         this.password = password;
     }

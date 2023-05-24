@@ -1,7 +1,7 @@
 package com.archit.EMS.exceptions;
 
-public class UserAlreadyExistsException extends RuntimeException{
-    public UserAlreadyExistsException(String message) {
+public class EmployeeAlreadyExistsException extends RuntimeException{
+    public EmployeeAlreadyExistsException(String message) {
         super(message);
     };
 }

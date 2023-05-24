@@ -2,16 +2,10 @@ package com.archit.EMS.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name="employee")
-public class User{
+public class Employee {
 
     // define fields
     @Id
@@ -39,11 +33,11 @@ public class User{
     @Column(name = "roles")
     private String roles;
 
-    public User(){
+    public Employee(){
         super();
     }
 
-    public User(String firstName, String lastName, String email, String password, String roles) {
+    public Employee(String firstName, String lastName, String email, String password, String roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

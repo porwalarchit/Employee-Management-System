@@ -1,7 +1,7 @@
 package com.archit.EMS.exceptions;
 
-public class UserNotExists extends RuntimeException{
-    public UserNotExists(String message) {
+public class EmployeeNotExists extends RuntimeException{
+    public EmployeeNotExists(String message) {
         super(message);
     };
 }

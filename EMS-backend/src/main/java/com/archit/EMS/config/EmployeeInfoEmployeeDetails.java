@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class UserInfoUserDetails implements UserDetails {
+public class EmployeeInfoEmployeeDetails implements UserDetails {
     private String email;
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UserInfoUserDetails(Employee employeeInfo) {
+    public EmployeeInfoEmployeeDetails(Employee employeeInfo) {
         email= employeeInfo.getEmail();
         password= employeeInfo.getPassword();
         authorities= Arrays.stream(employeeInfo.getRoles().split(","))
