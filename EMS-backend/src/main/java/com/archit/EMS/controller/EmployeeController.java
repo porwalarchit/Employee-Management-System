@@ -2,14 +2,12 @@ package com.archit.EMS.controller;
 
 import com.archit.EMS.dto.TokenResponse;
 import com.archit.EMS.dto.UserCredentials;
-import com.archit.EMS.entity.User;
-import com.archit.EMS.repository.UserRepository;
+import com.archit.EMS.entity.Employee;
 import com.archit.EMS.service.JwtService;
-import com.archit.EMS.service.UserService;
+import com.archit.EMS.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,14 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private EmployeeService employeeService;
 
     @Autowired
     private JwtService jwtService;
@@ -43,23 +40,23 @@ public class UserController {
 
     @PostMapping("/adduser")
 //    @PreAuthorize("hasAuthority('SUPERADMIN') or hasAuthority('ADMIN')")
-    public User saveUser(@RequestBody User theUser){
+    public Employee saveUser(@RequestBody Employee theEmployee){
 //        System.out.println(theUser);
-        User user = new User(
-                theUser.getFirstName(),
-                theUser.getLastName(),
-                theUser.getEmail(),
-                passwordEncoder.encode(theUser.getPassword()),
-                theUser.getRoles()
+        Employee employee = new Employee(
+                theEmployee.getFirstName(),
+                theEmployee.getLastName(),
+                theEmployee.getEmail(),
+                passwordEncoder.encode(theEmployee.getPassword()),
+                theEmployee.getRoles()
         );
-        User newUser =  userService.saveUser(user);
-        return newUser;
+        Employee newEmployee =  employeeService.saveEmployee(employee);
+        return newEmployee;
     }
 
     @GetMapping("/findAllUsers")
 //    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('SUPERADMIN')")
-    public List<User> findAllUsers() {
-        return userService.findAllUsers();
+    public List<Employee> findAllUsers() {
+        return employeeService.findAllEmployees();
     }
 
 

@@ -1,6 +1,5 @@
 package com.archit.EMS.service;
 
-import com.archit.EMS.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -20,7 +19,7 @@ import java.util.function.Function;
 public class JwtService {
         private static final String SECRET_KEY = "5267556B58703273357638792F423F4528482B4D6250655368566D5971337436";
         @Autowired
-        private UserService userService;
+        private EmployeeService employeeService;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -62,7 +61,7 @@ public class JwtService {
               .builder()
               .setClaims(extraClaims)
               .setSubject(email)
-              .claim("role", userService.findUserByEmail(email).getRoles().toString())
+              .claim("role", employeeService.findEmployeeByEmail(email).getRoles().toString())
               .setIssuedAt(new Date(System.currentTimeMillis()))
               .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
               .signWith(getSignInKey(), SignatureAlgorithm.HS256)

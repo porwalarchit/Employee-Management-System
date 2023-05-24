@@ -1,6 +1,6 @@
 package com.archit.EMS.config;
 
-import com.archit.EMS.entity.User;
+import com.archit.EMS.entity.Employee;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,10 +16,10 @@ public class UserInfoUserDetails implements UserDetails {
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UserInfoUserDetails(User userInfo) {
-        email=userInfo.getEmail();
-        password=userInfo.getPassword();
-        authorities= Arrays.stream(userInfo.getRoles().split(","))
+    public UserInfoUserDetails(Employee employeeInfo) {
+        email= employeeInfo.getEmail();
+        password= employeeInfo.getPassword();
+        authorities= Arrays.stream(employeeInfo.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }

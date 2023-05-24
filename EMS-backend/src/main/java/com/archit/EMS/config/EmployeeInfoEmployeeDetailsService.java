@@ -1,7 +1,7 @@
 package com.archit.EMS.config;
 
-import com.archit.EMS.entity.User;
-import com.archit.EMS.repository.UserRepository;
+import com.archit.EMS.entity.Employee;
+import com.archit.EMS.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,11 +14,11 @@ import java.util.Optional;
 public class UserInfoUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    private EmployeeRepository employeeRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> userInfo = userRepository.findByEmail(email);
+        Optional<Employee> userInfo = employeeRepository.findByEmail(email);
         return userInfo.map(UserInfoUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found " + email));
 
