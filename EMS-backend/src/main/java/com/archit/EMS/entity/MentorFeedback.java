@@ -24,4 +24,8 @@ public class MentorFeedback {
 
     @Column(name = "rating")
     private String rating;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="mentor_id", referencedColumnName = "mentor_id")
+    private Mentor mentor;
 }

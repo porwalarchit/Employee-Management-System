@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -35,11 +37,24 @@ public class Employee {
     @Column(name = "roles")
     private String roles;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "emp_md_id", referencedColumnName = "emp_md_id")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee")
     private EmployeeDetails employeeDetails;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dept_id", referencedColumnName = "dept_id")
     private Department department;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees")
+    private List<Project> projects;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+    private List<EmployeeReport> employeeReport;
+
+    public Employee(String firstName, String lastName, String email, String encode, String roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = encode;
+        this.roles = roles;
+    }
 }

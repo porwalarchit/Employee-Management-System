@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -24,4 +26,8 @@ public class Project {
 
     @Column(name = "status")
     private String status;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "emp_id", referencedColumnName = "id")
+    private List<Employee> employees;
 }

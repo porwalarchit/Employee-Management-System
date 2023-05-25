@@ -38,6 +38,7 @@ public class EmployeeDetails {
     @Column(name = "salary")
     private int salary;
 
-//    @OneToOne(mappedBy = "employee_details")
-//    private Employee employee;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "emp_id", referencedColumnName = "id")
+    private Employee employee;
 }

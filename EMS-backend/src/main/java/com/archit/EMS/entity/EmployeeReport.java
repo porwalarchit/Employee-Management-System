@@ -24,4 +24,12 @@ public class EmployeeReport {
 
     @Column(name = "report_status")
     private String reportStatus;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "emp_id", referencedColumnName = "id")
+    private Employee employee;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "feedback_id", referencedColumnName = "feedback_id")
+    private MentorFeedback mentorFeedback;
 }
