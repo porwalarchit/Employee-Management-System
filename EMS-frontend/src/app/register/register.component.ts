@@ -40,7 +40,7 @@ export class RegisterComponent {
       roles: "ROLE_"+this.registerForm.value.roles,
     }
 
-    this.http.post('http://localhost:8080/api/adduser', newUser ,{headers})
+    this.http.post('http://localhost:8080/api/addEmployee', newUser ,{headers})
     .subscribe(
       (res)=>{
         console.log(res);

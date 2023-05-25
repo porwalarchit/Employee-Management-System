@@ -38,18 +38,18 @@ public class EmployeeController {
         return "Hello World!!";
     }
 
-//    @PostMapping("/addEmployee")
-//    public Employee saveEmployee(@RequestBody Employee theEmployee){
-//        Employee employee = new Employee(
-//                theEmployee.getFirstName(),
-//                theEmployee.getLastName(),
-//                theEmployee.getEmail(),
-//                passwordEncoder.encode(theEmployee.getPassword()),
-//                theEmployee.getRoles()
-//        );
-//        Employee newEmployee =  employeeService.saveEmployee(employee);
-//        return newEmployee;
-//    }
+    @PostMapping("/addEmployee")
+    public Employee saveEmployee(@RequestBody Employee theEmployee){
+        Employee employee = new Employee(
+                theEmployee.getFirstName(),
+                theEmployee.getLastName(),
+                theEmployee.getEmail(),
+                passwordEncoder.encode(theEmployee.getPassword()),
+                theEmployee.getRoles()
+        );
+        Employee newEmployee =  employeeService.saveEmployee(employee);
+        return newEmployee;
+    }
 
     @GetMapping("/findAllEmployees")
     public List<Employee> findAllEmployees() {

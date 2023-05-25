@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS public.employee_report
     report_status character varying(255) COLLATE pg_catalog."default",
     reporting_date character varying(255) COLLATE pg_catalog."default",
     work_done character varying(255) COLLATE pg_catalog."default",
+    emp_id integer,
+    feedback_id integer,
     CONSTRAINT employee_report_pkey PRIMARY KEY (report_id)
 );
 
@@ -64,6 +66,7 @@ CREATE TABLE IF NOT EXISTS public.flyway_schema_history
 CREATE TABLE IF NOT EXISTS public.mentor
 (
     mentor_id integer NOT NULL,
+    emp_id integer,
     CONSTRAINT mentor_pkey PRIMARY KEY (mentor_id)
 );
 
@@ -73,6 +76,7 @@ CREATE TABLE IF NOT EXISTS public.mentor_feedback
     feedback character varying(255) COLLATE pg_catalog."default",
     flag boolean,
     rating character varying(255) COLLATE pg_catalog."default",
+    mentor_id integer,
     CONSTRAINT mentor_feedback_pkey PRIMARY KEY (feedback_id)
 );
 
@@ -85,6 +89,12 @@ CREATE TABLE IF NOT EXISTS public.project
     CONSTRAINT project_pkey PRIMARY KEY (project_id)
 );
 
+CREATE TABLE IF NOT EXISTS public.project_employees
+(
+    projects_project_id integer NOT NULL,
+    employees_id integer NOT NULL
+);
+
 ALTER TABLE IF EXISTS public.employee
     ADD CONSTRAINT fkaqchbcb8i6nvtl9g6c72yba0p FOREIGN KEY (dept_id)
     REFERENCES public.department (dept_id) MATCH SIMPLE
@@ -95,6 +105,48 @@ ALTER TABLE IF EXISTS public.employee
 ALTER TABLE IF EXISTS public.employee
     ADD CONSTRAINT fkm4tnmrdjvdsgmaxrpdpgwmjap FOREIGN KEY (emp_md_id)
     REFERENCES public.employee_details (emp_md_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.employee_report
+    ADD CONSTRAINT fko8dibqhycvkhdvm0cpqawdot3 FOREIGN KEY (emp_id)
+    REFERENCES public.employee (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.employee_report
+    ADD CONSTRAINT fkr3twq5g3k8tv76f2rxh0ikigd FOREIGN KEY (feedback_id)
+    REFERENCES public.mentor_feedback (feedback_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.mentor
+    ADD CONSTRAINT fk5i7gh4hq4vparwjy6lpj0vwn2 FOREIGN KEY (emp_id)
+    REFERENCES public.employee (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.mentor_feedback
+    ADD CONSTRAINT fks9xkoec7on6iofux4d04i38ae FOREIGN KEY (mentor_id)
+    REFERENCES public.mentor (mentor_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.project_employees
+    ADD CONSTRAINT fk8pk8mb3xcpdyvhn5bnh9y3vhl FOREIGN KEY (projects_project_id)
+    REFERENCES public.project (project_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.project_employees
+    ADD CONSTRAINT fkgw0l9hs8f60yqoqshfjm0smte FOREIGN KEY (employees_id)
+    REFERENCES public.employee (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
