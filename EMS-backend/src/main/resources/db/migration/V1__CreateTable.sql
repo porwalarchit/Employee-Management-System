@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS public.employee
     password character varying(255) COLLATE pg_catalog."default",
     roles character varying(255) COLLATE pg_catalog."default",
     dept_id integer,
-    emp_md_id integer,
     CONSTRAINT employee_pkey PRIMARY KEY (id),
     CONSTRAINT uk_fopic1oh5oln2khj8eat6ino0 UNIQUE (email)
 );
@@ -34,6 +33,7 @@ CREATE TABLE IF NOT EXISTS public.employee_details
     gender character varying(255) COLLATE pg_catalog."default",
     joining_date timestamp(6) without time zone,
     salary integer,
+    emp_id integer,
     CONSTRAINT employee_details_pkey PRIMARY KEY (emp_md_id)
 );
 
@@ -102,9 +102,9 @@ ALTER TABLE IF EXISTS public.employee
     ON DELETE NO ACTION;
 
 
-ALTER TABLE IF EXISTS public.employee
-    ADD CONSTRAINT fkm4tnmrdjvdsgmaxrpdpgwmjap FOREIGN KEY (emp_md_id)
-    REFERENCES public.employee_details (emp_md_id) MATCH SIMPLE
+ALTER TABLE IF EXISTS public.employee_details
+    ADD CONSTRAINT fkjwhhv402ja2w9ioxfbmbouv FOREIGN KEY (emp_id)
+    REFERENCES public.employee (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
