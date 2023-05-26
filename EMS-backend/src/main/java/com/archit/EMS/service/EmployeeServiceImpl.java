@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -23,8 +24,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findEmployeeByEmail(String email){
-        return employeeRepository.findByEmail(email).get();
+    public Optional<Employee> findEmployeeByEmail(String email){
+        return employeeRepository.findByEmail(email);
     }
 //    @Override
 //    public Optional<User> findUserByEmail(String email) {
