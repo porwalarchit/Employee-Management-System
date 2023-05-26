@@ -3,6 +3,7 @@ package com.archit.EMS.controller;
 import com.archit.EMS.dto.TokenResponse;
 import com.archit.EMS.dto.EmployeeCredentials;
 import com.archit.EMS.entity.Employee;
+import com.archit.EMS.service.DepartmentService;
 import com.archit.EMS.service.JwtService;
 import com.archit.EMS.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @Autowired
+    private DepartmentService departmentService;
+
+    @Autowired
     private JwtService jwtService;
 
     @Autowired
@@ -40,19 +44,21 @@ public class EmployeeController {
 
     @PostMapping("/addEmployee")
     public Employee saveEmployee(@RequestBody Employee theEmployee){
-        Employee employee = new Employee(
-                theEmployee.getFirstName(),
-                theEmployee.getLastName(),
-                theEmployee.getEmail(),
-                passwordEncoder.encode(theEmployee.getPassword()),
-                theEmployee.getRoles()
-        );
-        Employee newEmployee =  employeeService.saveEmployee(employee);
-        return newEmployee;
+        String pass = theEmployee.getPassword();
+        theEmployee.setPassword(passwordEncoder.encode((pass)));
+        theEmployee.setDepartment(departmentService.departmentById(theEmployee.getDepartment().getDeptId()).get());
+//        Employee employee = new Employee(
+//                theEmployee.getFirstName(),
+//                theEmployee.getLastName(),
+//                theEmployee.getEmail(),
+//                passwordEncoder.encode(theEmployee.getPassword()),
+//                theEmployee.getRoles()
+//        );
+        return employeeService.saveEmployee(theEmployee);
     }
 
     @GetMapping("/findAllEmployees")
-    public List<Employee> findAllEmployees() {
+    public List<Employee> findAllEmployees()  {
         return employeeService.findAllEmployees();
     }
 
