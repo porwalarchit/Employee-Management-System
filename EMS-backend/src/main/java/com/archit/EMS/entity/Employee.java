@@ -50,11 +50,16 @@ public class Employee {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
     private List<EmployeeReport> employeeReport;
 
-    public Employee(String firstName, String lastName, String email, String encode, String roles) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = encode;
-        this.roles = roles;
-    }
+//    public Employee(int id, String firstName, String lastName, String email, String password, String roles, EmployeeDetails employeeDetails, Department department, List<Project> projects, List<EmployeeReport> employeeReport) {
+//        this.id = id;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.password = password;
+//        this.roles = roles;
+//        this.employeeDetails = employeeDetails;
+//        this.department = department;
+//        this.projects = projects;
+//        this.employeeReport = employeeReport;
+//    }
 }

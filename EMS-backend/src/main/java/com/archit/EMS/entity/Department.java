@@ -21,9 +21,6 @@ public class Department {
     @Column(name = "dept_name")
     private String deptName;
 
-    @Column(name = "curr_project_id")
-    private String currentProjectId;
-
 //    @OneToOne(mappedBy = "department")
 //    private Employee employee;
 
