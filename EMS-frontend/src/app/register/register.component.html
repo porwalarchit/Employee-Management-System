@@ -38,11 +38,22 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <label for="form3Example3c" style="padding-right: 10px;">Assign Role:</label>
+                      <label for="form3Example3c" style="padding-right: 10px;">Employee Role:</label>
                       <select name="roles" id="roles" formControlName="roles">
                         <option value="SUPERADMIN">Super Admin</option>
                         <option value="ADMIN">Admin</option>
-                        <option value="EMPLOYEE" selected>Employee</option>
+                        <option value="EMPLOYEE" >User</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <label for="form3Example3d" style="padding-right: 10px;">Employee Type:</label>
+                      <select name="employeeType" id="employeeType" formControlName="employeeType">
+                        <option value=1>Trainee</option>
+                        <option value=2>Employee</option>
                       </select>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Form, FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
+import { Form, FormControl, FormGroup, FormGroupDirective, FormBuilder } from '@angular/forms';
 import { JwtService } from '../service/jwt.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -10,10 +10,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RegisterComponent {
 
-  constructor(private jwtService: JwtService, private http: HttpClient) { }
+  constructor(private jwtService: JwtService, private http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-
+    this.registerForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      roles: ['EMPLOYEE'], // Set 'EMPLOYEE' as the default selected value
+      employeeType: 1,
+      password: ['']
+    });
   }
 
   registerForm: FormGroup = new FormGroup({
@@ -21,7 +28,8 @@ export class RegisterComponent {
     lastName: new FormControl(""),
     email: new FormControl(""),
     password: new FormControl(""),
-    roles: new FormControl("")
+    roles: new FormControl(""),
+    employeeType: new FormControl("")
   })
 
   onSubmit() {
@@ -38,6 +46,7 @@ export class RegisterComponent {
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
       roles: "ROLE_"+this.registerForm.value.roles,
+      department:{deptId: this.registerForm.value.employeeType}
     }
 
     this.http.post('http://localhost:8080/api/addEmployee', newUser ,{headers})
