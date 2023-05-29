@@ -22,23 +22,26 @@ public class ProjectController {
     @Autowired
     private EmployeeService employeeService;
 
+    @GetMapping("")
+    public List<Project> getProject(){
+        return projectService.getProject();
+    }
+
     @PostMapping("newproject")
     public Project newProject(@RequestBody Project theProject){
-//        employeeService.findEmployeeByEmail(theProject.getEmployees().toString());
         List<Employee> newEmpList= new ArrayList<Employee>();
         for (Employee employee : theProject.getEmployees()) {
             // Error Handling of this part is remaining
             newEmpList.add(employeeService.findEmployeeByEmail(employee.getEmail()).get());
         }
+
         // Use the below code to add one employee at a time in a project.
         // Employee employee = theProject.getEmployees().;
         // String email = theProject.getEmployees().get(0).getEmail();
+
         theProject.setEmployees(newEmpList);
         return projectService.saveProject(theProject);
     }
 
-    @GetMapping("")
-    public List<Project> getProject(){
-        return projectService.getProject();
-    }
+    // Create an PUT endpoint for Updating Project data.
 }
