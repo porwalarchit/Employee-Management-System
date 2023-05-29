@@ -1,5 +1,6 @@
 package com.archit.EMS.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -41,10 +42,11 @@ public class Employee {
     private EmployeeDetails employeeDetails;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dept_id", referencedColumnName = "dept_id")
+    @JoinColumn(name = "dept_id_fk", referencedColumnName = "dept_id")
     private Department department;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees")
+    @JsonIgnoreProperties(value = "employees", allowSetters = true)
     private List<Project> projects;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")

@@ -44,6 +44,6 @@ public class EmployeeDetails {
 
     @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "emp_id", referencedColumnName = "id")
+    @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
     private Employee employee;
 }

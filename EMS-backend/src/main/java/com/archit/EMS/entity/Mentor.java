@@ -18,7 +18,7 @@ public class Mentor {
     private int mentorId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "emp_id", referencedColumnName = "id")
+    @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
     private Employee employee;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "mentor")

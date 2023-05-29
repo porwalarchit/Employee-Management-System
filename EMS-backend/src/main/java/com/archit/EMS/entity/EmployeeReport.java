@@ -26,10 +26,10 @@ public class EmployeeReport {
     private String reportStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "emp_id", referencedColumnName = "id")
+    @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
     private Employee employee;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "feedback_id", referencedColumnName = "feedback_id")
+    @JoinColumn(name = "feedback_id_fk", referencedColumnName = "feedback_id")
     private MentorFeedback mentorFeedback;
 }
