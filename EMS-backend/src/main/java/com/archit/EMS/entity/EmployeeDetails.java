@@ -42,8 +42,8 @@ public class EmployeeDetails {
     @Column(name = "salary")
     private int salary;
 
-    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonBackReference
     @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
     private Employee employee;
 }
