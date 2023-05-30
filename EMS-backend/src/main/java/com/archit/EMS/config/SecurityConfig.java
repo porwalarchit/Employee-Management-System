@@ -45,6 +45,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/project/newproject").hasAnyRole("SUPERADMIN", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/report/addreport").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/report/{id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/mentor").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/mentor").authenticated()
                         )
 //                .authorizeRequests()
 //                .antMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
