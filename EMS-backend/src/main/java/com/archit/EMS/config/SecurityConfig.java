@@ -47,6 +47,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/report/{id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/mentor").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/mentor").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/mentor/feedback/{id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/mentor/feedback").authenticated()
                         )
 //                .authorizeRequests()
 //                .antMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
