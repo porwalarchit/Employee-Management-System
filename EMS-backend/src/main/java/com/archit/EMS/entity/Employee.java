@@ -52,4 +52,7 @@ public class Employee {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
     @JsonIgnoreProperties(value="employee", allowSetters = true)
     private List<EmployeeReport> employeeReport;
+
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "employee")
+//    private Mentor mentor;
 }
