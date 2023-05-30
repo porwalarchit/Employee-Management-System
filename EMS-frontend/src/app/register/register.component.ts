@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RegisterComponent {
 
-  constructor(private jwtService: JwtService, private http: HttpClient, private formBuilder: FormBuilder) { }
+  constructor(private jwtService: JwtService, private http: HttpClient, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -59,5 +59,6 @@ export class RegisterComponent {
       }
     )
   }
+  
 
 }

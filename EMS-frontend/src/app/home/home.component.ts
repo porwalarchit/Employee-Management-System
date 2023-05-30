@@ -10,13 +10,6 @@ import { RoleService } from '../service/role.service';
 export class HomeComponent {
   decodedData: any;
 
-  constructor(private jwtService: JwtService, private role: RoleService) {
-  }
-  
-  ngAfterContentInit(){
-    this.decodedData = this.jwtService.getDecodedData();
-    console.log("Role " , this.decodedData.role);
-    // const role = this.decodedData.role;
-    this.role.assignRole(this.decodedData.role);
+  constructor() {
   }
 }

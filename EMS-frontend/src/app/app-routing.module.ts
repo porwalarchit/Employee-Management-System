@@ -3,15 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserdataComponent } from './home/userdata/userdata.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: '', redirectTo:'dashboard',pathMatch:'full'},
+  { path: '', component: HomeComponent, children: [{ path: 'register', component: RegisterComponent },{ path: 'dashboard', component: UserdataComponent }] },
+
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
