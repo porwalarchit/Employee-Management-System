@@ -1,0 +1,24 @@
+.custom-nav{
+    color: #000;
+}
+
+.active{
+    color: #fff;
+    background-color: #802f59;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color: #fff
+}
+
+.navbar .navbar-nav .nav-link {
+    border-radius: 0.25rem;
+}
+
+.nav-link {
+    /* display: block; */
+    padding: 0.5rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
