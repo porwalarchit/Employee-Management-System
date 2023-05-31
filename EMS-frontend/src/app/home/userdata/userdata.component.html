@@ -1,1 +1,46 @@
-<p>userdata works!</p>
+<div>
+<table class="table align-middle my-2 mx-4 bg-white" style="width: 96.5%;">
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Role</th>
+        <th>Project</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of userData">
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+                src="../../../assets/images/male-img.png"
+                alt=""  
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{data.firstName + " " + data.lastName }}</p>
+              <p class="text-muted mb-0">{{data.email}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{data.employeeDetails?.designation}}</p>
+          <p class="text-muted mb-0">{{data.department.deptName}}</p>
+        </td>
+        <td>{{data.roles}}</td>
+        <td>
+            <ul style="list-style: none; padding-inline-start: 0px;">
+                <li class="badge rounded-pill mx-1" *ngFor="let project of data.projects" [ngClass]="{'bg-success': project.status==='Current', 'bg-warning': project.status==='Previous'}">{{project.projectName}}</li>
+            </ul>
+        <td>
+          <button type="button" class="btn btn-link btn-sm btn-rounded">
+            Edit
+          </button>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
