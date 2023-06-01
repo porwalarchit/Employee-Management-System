@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserdataComponent } from './home/userdata/userdata.component';
 import { ProfileComponent } from './home/profile/profile.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'profile',pathMatch:'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'userdata', component: UserdataComponent }
   ] },
   { path: 'login', component: LoginComponent },
+  {path: '**', component: ErrorComponent}
 ];
 
 @NgModule({

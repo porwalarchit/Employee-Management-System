@@ -8,7 +8,7 @@
                         <img [src]="isMale ? maleImageUrl : femaleImageUrl" alt="">
                     </a>
                     <h1>{{profileData.firstName + " " + profileData.lastName}}</h1>
-                    <p>{{profileData.email}}</p>
+                    <h3><span>Role: </span> {{profileData.roles.slice(5)}}</h3>
                 </div>
             </div>
         </div>
