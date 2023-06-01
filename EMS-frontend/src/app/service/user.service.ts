@@ -7,10 +7,6 @@ import { Subject } from 'rxjs';
 })
 export class UserService {
 
-  inSignup: Subject<Boolean> = new Subject<Boolean>;
-  inLogin: Subject<Boolean> = new Subject<Boolean>;
-  isLoggedIn: Subject<Boolean> = new Subject<Boolean>;
-
   constructor(private http: HttpClient) { 
 
   }
