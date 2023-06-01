@@ -38,6 +38,7 @@ public class SecurityConfig {
                 configurer
                         .requestMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/findAllEmployees").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/dashboard").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/addEmployee").hasAnyRole("SUPERADMIN", "ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/employeedetails/{id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/employeedetails/add").authenticated()

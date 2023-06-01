@@ -1,5 +1,6 @@
 package com.archit.EMS.controller;
 
+import com.archit.EMS.dto.EmployeeEmail;
 import com.archit.EMS.dto.TokenResponse;
 import com.archit.EMS.dto.EmployeeCredentials;
 import com.archit.EMS.entity.Employee;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -37,9 +39,9 @@ public class EmployeeController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/test")
-    public String sayHello(){
-        return "Hello World!!";
+    @PostMapping("/dashboard")
+    public Optional<Employee> findEmployeeByEmail(@RequestBody EmployeeEmail email){
+        return employeeService.findEmployeeByEmail(email.getEmail());
     }
 
     @PostMapping("/addEmployee")
@@ -71,8 +73,6 @@ public class EmployeeController {
             throw new UsernameNotFoundException("invalid user request !");
         }
     }
-
-
 
 
 //    @PostMapping("/signup")
