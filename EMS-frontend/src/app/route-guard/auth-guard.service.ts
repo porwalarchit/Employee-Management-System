@@ -9,22 +9,11 @@ export class AuthGuardService implements CanActivate{
 
   constructor(private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log(state.url);
-    
-      // if(state.url == "/login"){
-      //   localStorage.removeItem('token');
-      //   return true;
-      // }
-
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree{    
       let token = localStorage.getItem('token');
       if(!token){
-        this.router.navigate(['/login']);
-        return false;
+        return this.router.createUrlTree(['/login']);
       }
-      else{
-        this.router.navigate(['/profile']);
-        return true;
-      }
+      return true;
     }
 }

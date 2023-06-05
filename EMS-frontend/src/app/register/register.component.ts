@@ -37,8 +37,8 @@ export class RegisterComponent {
     // console.log("TOKEN: ", token);
 
     // Create the request headers with the bearer token
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log("HEADER: ", headers);
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    // console.log("HEADER: ", headers);
 
     const newUser = {
       firstName: this.registerForm.value.firstName,
@@ -49,7 +49,7 @@ export class RegisterComponent {
       department:{deptId: this.registerForm.value.employeeType}
     }
 
-    this.http.post('http://localhost:8080/api/addEmployee', newUser ,{headers})
+    this.http.post('http://localhost:8080/api/addEmployee', newUser)
     .subscribe(
       (res)=>{
         console.log(res);

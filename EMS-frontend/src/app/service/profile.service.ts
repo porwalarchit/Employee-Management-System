@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnChanges, OnInit } from '@angular/core';
+import jwt_decode from 'jwt-decode';
 import { JwtService } from './jwt.service';
 import { Observable } from 'rxjs';
 
@@ -16,9 +17,9 @@ export class ProfileService{
   
   getProfile(): Observable<any> {
     let emailPayload = {
-        email: this.jwtData.getDecodedData()['sub']
-    }
-
+        email: jwt_decode(localStorage.getItem('token'))['sub']
+      }
+      
 
     return this.http.post<any>(this.BASE_URL + '/api/dashboard', emailPayload);
   }

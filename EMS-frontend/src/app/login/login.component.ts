@@ -31,7 +31,7 @@ export class LoginComponent {
         this.jwtService.storeDecodedData(decodedToken);
       }
       localStorage.setItem("token", res["token"]);
-      this.route.navigateByUrl('/');
+      this.route.navigate(['/profile']);
 
     }, (err)=>{
       alert(err.error.message);
