@@ -7,7 +7,7 @@ import { ProfileService } from 'src/app/service/profile.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profileData: any = [];
+  profileData: any;
   isMale: boolean = true; // Condition based on your data
   maleImageUrl: string = '../../../assets/images/male-img.png';
   femaleImageUrl: string = '../../../assets/images/female-img.png';
@@ -20,15 +20,15 @@ export class ProfileComponent implements OnInit {
     this.profile.getProfile().subscribe((res)=>{
       // console.log(res);
       this.profileData = res;
-      console.log(this.profileData);
+      // console.log(this.profileData);
       if(this.profileData.employeeDetails?.gender === 'Female'){
         this.isMale = false;
       }
     })
   }
 
-  ngOnChanges(){
-    this.profileData =  this.profile.getProfile();
-  }
+  // ngOnChanges(){
+  //   this.profileData =  this.profile.getProfile();
+  // }
 
 }

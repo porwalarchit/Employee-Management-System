@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class JwtService {
+export class JwtService implements OnInit{
   private decodedData: any;
+
+  ngOnInit(){
+    this.storeDecodedData(this.decodedData);
+  }
 
   storeDecodedData(decodedToken: any) {
     this.decodedData = decodedToken;

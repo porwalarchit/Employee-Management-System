@@ -36,7 +36,6 @@ export class LoginComponent {
     }, (err)=>{
       alert(err.error.message);
       console.log(err.error.message);
-      
     });
   }
 }

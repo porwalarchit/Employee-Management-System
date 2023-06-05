@@ -18,7 +18,7 @@ export class UserService {
 
     // Create the request headers with the bearer token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log("HEADER: ", headers);
+    // console.log("HEADER: ", headers);
     return this.http.get(this.BASE_URL + '/api/findAllEmployees', {headers});
   }
 }
