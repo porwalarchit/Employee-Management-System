@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { UserdataComponent } from './home/userdata/userdata.component';
 import { ProfileComponent } from './home/profile/profile.component';
 import { ErrorComponent } from './error/error.component';
+import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,11 @@ import { ErrorComponent } from './error/error.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthTokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
