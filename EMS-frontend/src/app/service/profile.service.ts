@@ -15,15 +15,11 @@ export class ProfileService{
 
   
   getProfile(): Observable<any> {
-    const token = localStorage.getItem('token');
-
     let emailPayload = {
         email: this.jwtData.getDecodedData()['sub']
     }
 
-    // Create the request headers with the bearer token
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.post<any>(this.BASE_URL + '/api/dashboard', emailPayload,{headers});
+    return this.http.post<any>(this.BASE_URL + '/api/dashboard', emailPayload);
   }
 }
