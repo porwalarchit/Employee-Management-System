@@ -12,7 +12,16 @@ export class AuthTokenInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const jwtToken = localStorage.getItem('token');
+
+    if(jwtToken){
+      request = request.clone( {
+        setHeaders : {
+          Authorization : `Bearer ${jwtToken}`
+        }
+      })
+    }
     return next.handle(request);
   }
 }
