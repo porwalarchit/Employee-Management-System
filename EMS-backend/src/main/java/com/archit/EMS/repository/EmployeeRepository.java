@@ -10,7 +10,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 //    User findByEmail()
     Optional<Employee> findByEmail(String email);
 
-//    Optional<User> findByName(String username);
+//    @Override
+//    Optional<Employee> findById(Integer integer);
+
+    //    Optional<User> findByName(String username);
 
 
 }
