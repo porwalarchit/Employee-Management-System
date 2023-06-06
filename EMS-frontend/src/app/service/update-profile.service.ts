@@ -13,9 +13,12 @@ export class UpdateProfileService{
 
   constructor(private http: HttpClient, private jwtData: JwtService) { 
   }
-
+  addDetails(newDetails): Observable<any>{
+    return this.http.post<any>(this.BASE_URL + '/api/employeedetails/add', newDetails);
+  }
   
   updateProfile(updatedDetails): Observable<any> {
-    return this.http.post<any>(this.BASE_URL + '/api/employeedetails/add', updatedDetails);
+    return this.http.put<any>(this.BASE_URL + '/api/employeedetails/update', updatedDetails);
   }
+  
 }

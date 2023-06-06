@@ -1,6 +1,7 @@
 package com.archit.EMS.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -39,6 +40,7 @@ public class Employee {
     private String roles;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee")
+    @JsonManagedReference
     private EmployeeDetails employeeDetails;
 
     @OneToOne(cascade = CascadeType.ALL)

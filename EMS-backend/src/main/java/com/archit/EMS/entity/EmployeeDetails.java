@@ -2,6 +2,7 @@ package com.archit.EMS.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ import java.util.Date;
 @Table(name = "employee_details")
 public class EmployeeDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emp_md_id")
     private int empMdId;
 
@@ -44,6 +45,7 @@ public class EmployeeDetails {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JsonBackReference
-    @JoinColumn(name = "emp_id_fk", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
     private Employee employee;
+
 }

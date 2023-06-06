@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -24,12 +25,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Optional<Employee> findEmployeeByEmail(String email){
+    public Optional<Employee> findEmployeeByEmail(String email) {
         return employeeRepository.findByEmail(email);
     }
-//    @Override
-//    public Optional<User> findUserByEmail(String email) {
-//        return userRepository.findByEmail(email);
-//    }
 
+    @Override
+    public Optional<Employee> findEmployeeById(int id) {
+        return employeeRepository.findById(id);
+    }
 }
