@@ -13,8 +13,8 @@ public class EmployeeDetailsServiceImpl implements EmployeeDetailsService{
     EmployeeDetailsRepository employeeDetailsRepository;
 
     @Override
-    public EmployeeDetails saveDetails(EmployeeDetails theEmployeeDetails) {
-        return employeeDetailsRepository.save(theEmployeeDetails);
+    public EmployeeDetails saveDetails(Optional<EmployeeDetails> theEmployeeDetails) {
+        return employeeDetailsRepository.save(theEmployeeDetails.get());
     }
 
     @Override
