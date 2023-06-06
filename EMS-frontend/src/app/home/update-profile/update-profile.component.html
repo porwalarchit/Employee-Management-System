@@ -1,0 +1,95 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container bootstrap snippets bootdey">
+    <div class="row" *ngIf="profileData">
+        <div class="profile-nav col-md-3">
+            <div class="panel">
+                <div class="user-heading round">
+                    <a href="#">
+                        <img [src]="isMale ? maleImageUrl : femaleImageUrl" alt="">
+                    </a>
+                    <h1>{{profileData.firstName + " " + profileData.lastName}}</h1>
+                    <h3><span>Role: </span> {{profileData.roles.slice(5)}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="profile-info col-md-9">
+            <div class="panel">
+                <div class="bio-graph-heading">
+                    <ul style="list-style: none; padding-inline-start: 0px; margin-bottom: 0px;">
+                        Projects :
+                        <li class="badge rounded-pill mx-1" *ngFor="let project of profileData.projects"
+                            [ngClass]="{'bg-success': project.status==='Current', 'bg-warning': project.status==='Previous'}">
+                            {{project.projectName}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body bio-graph-info">
+                    <h1 style="text-align: center; margin-top: 10px;"><b>Update Details</b> </h1>
+                    <div class="row">
+                        <div class="bio-row">
+                            <p><span>Employee Id </span>: {{profileData.id}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Employee Type </span>: {{profileData.department?.deptName}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Email </span>: {{profileData.email}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Designation </span>: {{profileData.employeeDetails?.designation}}</p>
+                        </div>
+                        <div class="row">
+                            <form action="">
+                                <div class="bio-row">
+                                    <div class="form-group row">
+                                        <label for="joiningdate" class="col-4 col-form-label"
+                                            style="padding: 0px; width: 32.333333%;">Joining Date</label>
+                                        <div class="col-8" style="padding: 0px; display: -webkit-inline-box;">
+                                            <p style="margin-right: 3px;">:</p>
+                                            <input  type="text" name="" id="joiningdate" placeholder="yyyy-mm-dd" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bio-row">
+                                    <div class="form-group row" style="margin-left: 10px;">
+                                        <label for="mobile" class="col-4 col-form-label" style="padding: 0px;">Mobile
+                                            Number</label>
+                                        <div class="col-8" style="padding: 0px; display: -webkit-inline-box;">
+                                            <p style="margin-left: 6px; margin-right: 3px;">:</p>
+                                            <input type="text" name="" id="mobile" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bio-row">
+                                    <div class="form-group row">
+                                        <label for="gender" class="col-4 col-form-label"
+                                            style="padding: 0px; width: 32.333333%;">Gender</label>
+                                        <div class="col-8" style="padding: 0px; display: -webkit-inline-box;">
+                                            <p style="margin-right: 3px;">:</p>
+                                            <input type="text" name="" id="gender" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bio-row">
+                                    <div class="form-group row" style="margin-left: 10px;">
+                                        <label for="dob" class="col-4 col-form-label" style="padding: 0px;">Date of
+                                            Birth</label>
+                                        <div class="col-8" style="padding: 0px; display: -webkit-inline-box;">
+                                            <p style="margin-left: 6px; margin-right: 3px;">:</p>
+                                            <input type="text" name="" id="dob" placeholder="yyyy-mm-dd"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="display: flex; justify-content: center; align-items: center;  ">
+                    <button type="button" class="btn btn-success" routerLink="/profile">Save Details</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -7,20 +7,20 @@ import { UserdataComponent } from './home/userdata/userdata.component';
 import { ProfileComponent } from './home/profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthGuardService } from './route-guard/auth-guard.service';
+import { UpdateProfileComponent } from './home/update-profile/update-profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  {path: '', redirectTo:'profile',pathMatch:'full'},
-  { path: '',canActivate: [AuthGuardService] , component: HomeComponent, children: [
-    { path: 'profile',component: ProfileComponent},
-    { path: 'register' , component: RegisterComponent },
-    { path: 'userdata' ,component: UserdataComponent },
-  ] },
-  // {path: '',redirectTo:'profile',pathMatch:'full'},
-  // { path: 'profile', canActivate: [AuthGuardService],component: ProfileComponent},
-  // { path: 'register', canActivate: [AuthGuardService], component: RegisterComponent },
-  // { path: 'userdata', canActivate: [AuthGuardService], component: UserdataComponent },
-  {path: '**', component: ErrorComponent}
+  { path: '', redirectTo: 'profile', pathMatch: 'full' },
+  {
+    path: '', canActivate: [AuthGuardService], component: HomeComponent, children: [
+      { path: 'profile', component: ProfileComponent },
+      { path: 'profile/update', component: UpdateProfileComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'userdata', component: UserdataComponent },
+    ]
+  },
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({

@@ -12,6 +12,8 @@ import { UserdataComponent } from './home/userdata/userdata.component';
 import { ProfileComponent } from './home/profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
+import { UpdateProfileComponent } from './home/update-profile/update-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -22,12 +24,13 @@ import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
     UserdataComponent,
     ProfileComponent,
     ErrorComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

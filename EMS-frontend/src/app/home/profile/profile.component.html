@@ -16,15 +16,15 @@
             <div class="panel">
                 <div class="bio-graph-heading">
                     <ul style="list-style: none; padding-inline-start: 0px; margin-bottom: 0px;">
-                        Projects : 
-                        <li class="badge rounded-pill mx-1" *ngFor="let project of profileData.projects" [ngClass]="{'bg-success': project.status==='Current', 'bg-warning': project.status==='Previous'}">
+                        Projects :
+                        <li class="badge rounded-pill mx-1" *ngFor="let project of profileData.projects"
+                            [ngClass]="{'bg-success': project.status==='Current', 'bg-warning': project.status==='Previous'}">
                             {{project.projectName}}
                         </li>
                     </ul>
-                    <!-- <p><span>Project </span>: {{project.projectName}}</p> -->
                 </div>
                 <div class="panel-body bio-graph-info">
-                    <h1>Personal Details</h1>
+                    <h1 style="text-align: center; margin-top: 10px;"><b>Personal Details</b> </h1>
                     <div class="row">
                         <div class="bio-row">
                             <p><span>Employee Id </span>: {{profileData.id}}</p>
@@ -51,6 +51,9 @@
                             <p><span>Date of Birth</span>: {{profileData.employeeDetails?.dateOfBirth}}</p>
                         </div>
                     </div>
+                </div>
+                <div class="container" style="display: flex; justify-content: center; align-items: center;  ">
+                    <button type="button" class="btn btn-danger" routerLink="update">Update Details</button>
                 </div>
             </div>
 
