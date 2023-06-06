@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, FormGroupDirective, FormBuilder } from '@angular/forms';
 import { JwtService } from '../service/jwt.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RegisterService } from '../service/register.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RegisterComponent {
 
-  constructor(private jwtService: JwtService, private http: HttpClient, private formBuilder: FormBuilder ) { }
+  constructor(private jwtService: JwtService, private registerservice: RegisterService, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -34,11 +35,6 @@ export class RegisterComponent {
 
   onSubmit() {
     const token = localStorage.getItem('token');
-    // console.log("TOKEN: ", token);
-
-    // Create the request headers with the bearer token
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    // console.log("HEADER: ", headers);
 
     const newUser = {
       firstName: this.registerForm.value.firstName,
@@ -49,8 +45,7 @@ export class RegisterComponent {
       department:{deptId: this.registerForm.value.employeeType}
     }
 
-    this.http.post('http://localhost:8080/api/addEmployee', newUser)
-    .subscribe(
+    this.registerservice.registerUser(newUser).subscribe(
       (res)=>{
         console.log(res);
       },
