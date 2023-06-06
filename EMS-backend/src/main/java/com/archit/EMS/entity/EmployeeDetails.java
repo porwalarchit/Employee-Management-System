@@ -19,7 +19,7 @@ import java.util.Date;
 @Table(name = "employee_details")
 public class EmployeeDetails {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emp_md_id")
     private int empMdId;
 
@@ -43,9 +43,10 @@ public class EmployeeDetails {
     @Column(name = "salary")
     private int salary;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JsonBackReference
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JsonBackReference
     @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
+    @JsonIgnoreProperties(value = {"employeeDetails"}, allowSetters = true)
     private Employee employee;
 
 }
