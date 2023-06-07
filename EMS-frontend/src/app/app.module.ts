@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { UserdataComponent } from './home/userdata/userdata.component';
@@ -13,6 +13,7 @@ import { ProfileComponent } from './home/profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 import { UpdateProfileComponent } from './home/update-profile/update-profile.component';
+import { UpdateUserdataComponent } from './home/update-userdata/update-userdata.component';
 
 
 @NgModule({
@@ -25,8 +26,10 @@ import { UpdateProfileComponent } from './home/update-profile/update-profile.com
     ProfileComponent,
     ErrorComponent,
     UpdateProfileComponent,
+    UpdateUserdataComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

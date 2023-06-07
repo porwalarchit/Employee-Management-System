@@ -27,8 +27,4 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  // ngOnChanges(){
-  //   this.profileData =  this.profile.getProfile();
-  // }
-
 }
