@@ -18,6 +18,7 @@ export class RoleService implements OnInit{
   }
   
   getRole(){
+    this.assignRole(this.jwtService?.getDecodedData()['role']);
     return this.role;
   }
 

@@ -44,7 +44,8 @@ export class RegisterComponent {
       roles: "ROLE_"+this.registerForm.value.roles,
       department:{deptId: this.registerForm.value.employeeType}
     }
-
+    console.log(newUser);
+    
     this.registerservice.registerUser(newUser).subscribe(
       (res)=>{
         console.log(res);
