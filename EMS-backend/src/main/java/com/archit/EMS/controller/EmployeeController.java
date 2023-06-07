@@ -39,6 +39,11 @@ public class EmployeeController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @GetMapping("employee/{id}")
+    public Optional<Employee> findEmployeeById(@PathVariable int id){
+        return employeeService.findEmployeeById(id);
+    }
+
     @PostMapping("/dashboard")
     public Optional<Employee> findEmployeeByEmail(@RequestBody EmployeeEmail email){
         return employeeService.findEmployeeByEmail(email.getEmail());
