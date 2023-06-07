@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnChanges, OnInit } from '@angular/core';
-import jwt_decode from 'jwt-decode';
 import { JwtService } from './jwt.service';
 import { Observable } from 'rxjs';
 
@@ -18,7 +17,6 @@ export class UpdateProfileService{
   }
   
   updateProfile(updatedDetails): Observable<any> {
-    return this.http.put<any>(this.BASE_URL + '/api/employeedetails/update', updatedDetails);
+    return this.http.put<any>(this.BASE_URL + `/api/employeedetails/update`, updatedDetails);
   }
-  
 }

@@ -43,17 +43,13 @@ export class UpdateProfileComponent implements OnInit {
   onSubmit() {
     if (this.profileData.employeeDetails) {
       const updatedDetails = {
-        empMdId: this.profileData.employeeDetails.empMdId,
+        empMdId: this.profileData.employeeDetails?.empMdId,
         gender: this.updateDetailsForm.value.gender,
         dateOfBirth: this.updateDetailsForm.value.dateOfBirth,
         contactNumber: this.updateDetailsForm.value.contactNumber,
         joiningDate: this.updateDetailsForm.value.joiningDate,
-        // employee: this.profileData.id
-        // employee: { id: this.profileData.id, email: this.profileData.email, firstName: this.profileData.firstName, lastName: this.profileData.lastName, password: this.profileData.password, roles: this.profileData.roles,
-        // department: this.profileData.department?.deptId}
+        designation: this.profileData.employeeDetails?.designation
       }
-      console.log(updatedDetails);
-
       this.updateprofile.updateProfile(updatedDetails).subscribe(
         (res) => {
           console.log(res);
@@ -71,8 +67,6 @@ export class UpdateProfileComponent implements OnInit {
         joiningDate: this.updateDetailsForm.value.joiningDate,
         employee: { email: this.profileData.email }
       }
-      // console.log(newDetails);
-
       this.updateprofile.addDetails(newDetails).subscribe(
         (res) => {
           console.log(res);

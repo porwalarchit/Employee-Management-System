@@ -34,15 +34,14 @@ public class EmployeeDetailsController {
         return employeeDetailsService.saveDetails(Optional.of(employeeDetails));
     }
 
-    @PutMapping("/update/{id}")
-    public Optional<EmployeeDetails> updateDetails(@PathVariable int id, @RequestBody EmployeeDetails employeeDetails){
-        System.out.println(employeeDetails);
-        Optional<EmployeeDetails> emp1 = employeeDetailsService.getEmployeeDetails(id);
+    @PutMapping("/update")
+    public EmployeeDetails updateDetails(@RequestBody EmployeeDetails employeeDetails){
+        Optional<EmployeeDetails> emp1 = employeeDetailsService.getEmployeeDetails(employeeDetails.getEmpMdId());
         emp1.get().setGender(employeeDetails.getGender());
         emp1.get().setDateOfBirth(employeeDetails.getDateOfBirth());
         emp1.get().setContactNumber(employeeDetails.getContactNumber());
         emp1.get().setDesignation(employeeDetails.getDesignation());
         emp1.get().setJoiningDate(employeeDetails.getJoiningDate());
-        return Optional.ofNullable(employeeDetailsService.saveDetails(emp1));
+        return employeeDetailsService.saveDetails(emp1);
     }
 }
