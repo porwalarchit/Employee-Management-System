@@ -1,0 +1,58 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="profile-nav col-md-3">
+            <div class="panel">
+                <div class="user-heading round">
+                    <a href="#">
+                        <img [src]="isMale ? maleImageUrl : femaleImageUrl" alt="">
+                    </a>
+                    <h1>{{userData.firstName + " " + userData.lastName}}</h1>
+                    <h3><span>Role: </span> {{userData.roles.slice(5)}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="profile-info col-md-9">
+            <div class="panel">
+                <div class="bio-graph-heading">
+                    <ul style="list-style: none; padding-inline-start: 0px; margin-bottom: 0px;">
+                        Projects :
+                        <li class="badge rounded-pill mx-1" *ngFor="let project of userData.projects"
+                            [ngClass]="{'bg-success': project.status==='Current', 'bg-warning': project.status==='Previous'}">
+                            {{project.projectName}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body bio-graph-info">
+                    <h1 style="text-align: center; margin-top: 10px;"><b>Personal Details</b> </h1>
+                    <div class="row">
+                        <div class="bio-row">
+                            <p><span>Employee Id </span>: {{userData.id}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Employee Type </span>: {{userData.department?.deptName}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Email </span>: {{userData.email}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Designation </span>: {{userData.employeeDetails?.designation}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Joining Date</span>: {{userData.employeeDetails?.joiningDate}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Mobile </span>: {{userData.employeeDetails?.contactNumber}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Gender </span>: {{userData.employeeDetails?.gender}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Date of Birth</span>: {{userData.employeeDetails?.dateOfBirth}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
