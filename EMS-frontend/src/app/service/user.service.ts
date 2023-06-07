@@ -15,4 +15,8 @@ export class UserService {
   getUserData(){
     return this.http.get(this.BASE_URL + '/api/findAllEmployees');
   }
+
+  getUserDataById(userId){
+    return this.http.get(this.BASE_URL + '/api/employee/' + userId);
+  }
 }
