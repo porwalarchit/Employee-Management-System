@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">  
 <div>
 <table class="table align-middle my-2 mx-4 bg-white" style="width: 96.5%;">
     <thead class="bg-light">
@@ -26,7 +27,18 @@
           </div>
         </td>
         <td>
-          <p class="fw-normal mb-1">{{data.employeeDetails?.designation}}</p>
+          <div class="d-flex align-items-center justify-content-between">
+            <ng-container *ngIf="!data.isEditing; else editMode">
+              <p class="fw-normal mb-1">{{data.employeeDetails?.designation}}</p>
+              <button type="button" class="btn btn-primary bi bi-pencil" style="font-size: 12px;" (click)="enableEdit(data)"></button>
+            </ng-container>
+          
+            <ng-template #editMode style="padding-left: 0px; padding-right: 0px;">
+              <input type="text" class="form-control" style="margin-right: 10px;" [id]="'designationInput-' + data.id" [(ngModel)]="data.designationValue">
+              <button type="button" class="btn btn-success" style="font-size: 12px; margin-right: 2px;" (click)="saveEdit(data)"><span class="bi bi-save"></span></button>
+              <button type="button" class="btn btn-danger" style="font-size: 12px;" (click)="cancelEdit(data)"><span class="bi bi-x-lg"></span></button>
+            </ng-template>
+          </div>   
           <p class="text-muted mb-0">{{data.department.deptName}}</p>
         </td>
         <td>{{data.roles}}</td>
@@ -35,12 +47,10 @@
                 <li class="badge rounded-pill mx-1" *ngFor="let project of data.projects" [ngClass]="{'bg-success': project.status==='Current', 'bg-warning': project.status==='Previous'}">{{project.projectName}}</li>
             </ul>
         <td>
-          <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Edit
-          </button>
+          <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="editDetails(data.id)">Edit</button>
         </td>
       </tr>
-      
     </tbody>
   </table>
 </div>
+<router-outlet></router-outlet>
