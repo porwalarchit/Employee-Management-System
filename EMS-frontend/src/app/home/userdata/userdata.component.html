@@ -11,15 +11,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of userData">
+      <tr *ngFor="let data of userData; let i = index">
         <td>
           <div class="d-flex align-items-center">
-            <img
-                src="../../../assets/images/male-img.png"
-                alt=""  
-                style="width: 45px; height: 45px"
-                class="rounded-circle"
-                />
+            <img src="../../../assets/images/male-img.png" alt=""  style="width: 45px; height: 45px" class="rounded-circle"/>
             <div class="ms-3">
               <p class="fw-bold mb-1">{{data.firstName + " " + data.lastName }}</p>
               <p class="text-muted mb-0">{{data.email}}</p>
@@ -27,15 +22,14 @@
           </div>
         </td>
         <td>
-          <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-between" >
             <ng-container *ngIf="!data.isEditing; else editMode">
-              <p class="fw-normal mb-1">{{data.employeeDetails?.designation}}</p>
+              <p class="fw-normal mb-1" style="max-width: 200px;">{{data.employeeDetails?.designation}}</p>
               <button type="button" class="btn btn-primary bi bi-pencil" style="font-size: 12px;" (click)="enableEdit(data)"></button>
             </ng-container>
-          
             <ng-template #editMode style="padding-left: 0px; padding-right: 0px;">
-              <input type="text" class="form-control" style="margin-right: 10px;" [id]="'designationInput-' + data.id" [(ngModel)]="data.designationValue">
-              <button type="button" class="btn btn-success" style="font-size: 12px; margin-right: 2px;" (click)="saveEdit(data)"><span class="bi bi-save"></span></button>
+              <input type="text" class="form-control" style="padding-left: 0px; padding-right: 0px; margin-right: 10px;" size="5" [id]="'designationInput-' + data.id" [(ngModel)]="data.employeeDetails.designation">
+              <button type="button" class="btn btn-success" style="font-size: 12px; margin-right: 2px;" (click)="saveEdit(data,i)"><span class="bi bi-save"></span></button>
               <button type="button" class="btn btn-danger" style="font-size: 12px;" (click)="cancelEdit(data)"><span class="bi bi-x-lg"></span></button>
             </ng-template>
           </div>   
