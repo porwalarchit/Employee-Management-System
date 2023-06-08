@@ -1,0 +1,38 @@
+<div class="model-container">
+    <div class="modal-content">
+        <div class="modal-header" >
+            <h4 id="myModalLabel" class="modal-title">Add New Project</h4>
+            <button type="button" (click)="closeForm()" data-bs-dismiss="modal" aria-label="Close"
+                class="btn-close"></button>
+        </div>
+        <form [formGroup]="addProjectForm" novalidate="" autocomplete="off" class="ng-pristine ng-invalid ng-touched"
+            (ngSubmit)="submitForm()">
+            <div class="modal-body">
+                <div class="form-group row mt-2">
+                    <label class="col-12 col-form-label required">Project Name*</label>
+                    <div class="col-12">
+                        <select name="projectname" id="projectname" class="form-select mt-1 ng-untouched ng-pristine ng-valid">
+                            <option value=""*ngFor="let data of projectData">{{data.projectName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <label class="col-12 col-form-label required">Project Status</label>
+                    <div class="col-12">
+                        <select name="status" id="status" class="form-select mt-1 ng-untouched ng-pristine ng-valid"
+                            formControlName="status">
+                            <option value="Current">Current</option>
+                            <option value="Previous">Previous</option>
+                            <option value="Upcoming">Upcoming</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer my-2">
+                <button type="button" (click)="closeForm()" data-bs-dismiss="modal"
+                    class="btn btn-radius custom-gray me-2"> Close </button>
+                <button type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-radius">Add Project</button>
+            </div>
+        </form>
+    </div>
+</div>
