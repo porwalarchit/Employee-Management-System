@@ -8,8 +8,8 @@ import { ProjectService } from 'src/app/service/project.service';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent {
-  isFormOpen: boolean = false;
-  addProjectForm: FormGroup
+  // isFormOpen: boolean = false;
+  // addProjectForm: FormGroup
   projectData: any = [];
 
   constructor(private projectService: ProjectService) { }
@@ -25,37 +25,37 @@ export class ProjectComponent {
       }
     )
 
-    this.addProjectForm = new FormGroup({
-      projectId: new FormControl(""),
-      projectName: new FormControl(""),
-      projectDesc: new FormControl(""),
-      status: new FormControl("")
-    })
+    // this.addProjectForm = new FormGroup({
+    //   projectId: new FormControl(""),
+    //   projectName: new FormControl(""),
+    //   projectDesc: new FormControl(""),
+    //   status: new FormControl("")
+    // })
   }
 
-  openForm() {
-    this.isFormOpen = true;
-  }
+  // openForm() {
+  //   this.isFormOpen = true;
+  // }
 
-  closeForm() {
-    this.isFormOpen = false;
-  }
+  // closeForm() {
+  //   this.isFormOpen = false;
+  // }
 
-  submitForm() {
-    const projectDetails = {
-      projectId: this.addProjectForm.value.projectId,
-      projectName: this.addProjectForm.value.projectName,
-      projectDesc: this.addProjectForm.value.projectDesc,
-      status: this.addProjectForm.value.status,
-      employees: []
-    }
-    this.projectService.addProject(projectDetails).subscribe(
-      (res) => {
-        this.isFormOpen = false;
-        console.log(res);
-      }, (err) => {
-        console.log(err);
-      }
-    );
-  }
+  // submitForm() {
+  //   const projectDetails = {
+  //     projectId: this.addProjectForm.value.projectId,
+  //     projectName: this.addProjectForm.value.projectName,
+  //     projectDesc: this.addProjectForm.value.projectDesc,
+  //     status: this.addProjectForm.value.status,
+  //     employees: []
+  //   }
+  //   this.projectService.addProject(projectDetails).subscribe(
+  //     (res) => {
+  //       this.isFormOpen = false;
+  //       console.log(res);
+  //     }, (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 }
