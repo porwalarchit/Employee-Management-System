@@ -38,9 +38,7 @@ export class UserdataComponent {
   }
 
   saveEdit(data,i) {
-    data.isEditing = false;
-    // console.log(i);
-    
+    data.isEditing = false;    
     if(data.employeeDetails){
       const updatedDetails = {
         empMdId: data.employeeDetails?.empMdId,
