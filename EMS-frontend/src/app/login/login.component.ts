@@ -12,7 +12,7 @@ import { RoleService } from '../service/role.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private loginService: LoginService, private jwtService: JwtService, private route: Router){}
+  constructor(private loginService: LoginService, private jwtService: JwtService, private route: Router, private roleService: RoleService){}
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
@@ -31,6 +31,8 @@ export class LoginComponent {
         this.jwtService.storeDecodedData(decodedToken);
       }
       localStorage.setItem("token", res["token"]);
+      this.roleService.assignRole(this.jwtService?.getDecodedData()['role']);
+
       this.route.navigate(['/profile']);
 
     }, (err)=>{

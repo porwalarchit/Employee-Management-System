@@ -8,49 +8,53 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent {
   decodedData: any;
-  loggedIn : Boolean = true;
+  loggedIn: Boolean = true;
   userRole: string;
   userEmployee: Boolean = false;
-  userAdmin : Boolean = false;
+  userAdmin: Boolean = false;
   userSuperAdmin: Boolean = false;
 
 
-  constructor(private router: Router, private role : RoleService) {
+  constructor(private router: Router, private role: RoleService) {
   }
 
-  ngOnInit(){
-    if(localStorage.getItem('token')){
+
+
+  ngOnInit() {
+    if (localStorage.getItem('token')) {
       this.loggedIn = false;
-    } 
-    this.userRole = this.role.getRole();
-    this.checkUser();
+    }    
+    if(this.role){
+      this.userRole = this.role.getRole();
+      this.checkUser();
+    }
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     this.loggedIn = true;
     this.router.navigate(['/login']);
   }
 
-  checkUser(){
-    if(this.userRole === 'ROLE_EMPLOYEE'){
+  checkUser() {
+    if (this.userRole === 'ROLE_EMPLOYEE') {
       this.userEmployee = true;
       this.userAdmin = false;
       this.userSuperAdmin = false;
     }
-    else if(this.userRole === 'ROLE_ADMIN'){
+    else if (this.userRole === 'ROLE_ADMIN') {
       this.userEmployee = false;
       this.userAdmin = true;
       this.userSuperAdmin = false;
     }
-    else if(this.userRole === 'ROLE_SUPERADMIN'){
+    else if (this.userRole === 'ROLE_SUPERADMIN') {
       this.userEmployee = false;
       this.userAdmin = false;
       this.userSuperAdmin = true;
     }
-    else{
+    else {
       this.userEmployee = false;
       this.userAdmin = false;
       this.userSuperAdmin = false;
