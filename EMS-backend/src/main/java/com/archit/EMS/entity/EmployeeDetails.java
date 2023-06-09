@@ -44,7 +44,6 @@ public class EmployeeDetails {
     private int salary;
 
     @OneToOne(cascade = CascadeType.ALL)
-//    @JsonBackReference
     @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
     @JsonIgnoreProperties(value = {"employeeDetails"}, allowSetters = true)
     private Employee employee;

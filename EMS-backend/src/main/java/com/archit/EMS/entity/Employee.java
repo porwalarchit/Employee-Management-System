@@ -46,7 +46,7 @@ public class Employee {
     @JoinColumn(name = "dept_id_fk", referencedColumnName = "dept_id")
     private Department department;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = "employees", allowSetters = true)
     private List<Project> projects;
 
