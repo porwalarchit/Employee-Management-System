@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectServiceImpl implements ProjectService{
@@ -13,12 +14,17 @@ public class ProjectServiceImpl implements ProjectService{
     private ProjectRepository projectRepository;
 
     @Override
-    public Project saveProject(Project theProject) {
-        return projectRepository.save(theProject);
+    public Project saveProject(Optional<Project> theProject) {
+        return projectRepository.save(theProject.get());
     }
 
     @Override
     public List<Project> getProject() {
         return projectRepository.findAll();
+    }
+
+    @Override
+    public Optional<Project> getProjectDetails(int id) {
+        return projectRepository.findById(id);
     }
 }
