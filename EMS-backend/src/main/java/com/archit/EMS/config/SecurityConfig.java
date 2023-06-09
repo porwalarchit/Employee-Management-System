@@ -46,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/employeedetails/update").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/project").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/project/newproject").hasAnyRole("SUPERADMIN", "ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/project/addmember").hasAnyRole("SUPERADMIN", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/report/addreport").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/report/{id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/mentor").authenticated()
