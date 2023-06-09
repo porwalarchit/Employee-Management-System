@@ -10,7 +10,8 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserdataComponent {
   userData: any = [];
-
+  maleImageUrl: string = '../../../assets/images/male-img.png';
+  femaleImageUrl: string = '../../../assets/images/female-img.png';
 
   isEditing: boolean = false;
   designationValue: string = '';
@@ -23,7 +24,6 @@ export class UserdataComponent {
     this.userService.getUserData().subscribe((res) => {
       this.userData = res;
       console.log(this.userData);
-      
     })
   }
 
