@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtService } from '../service/jwt.service';
-import { RoleService } from '../service/role.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   decodedData: any;
   loggedIn: Boolean = true;
   userRole: string;
@@ -17,23 +15,20 @@ export class HomeComponent {
   userSuperAdmin: Boolean = false;
 
 
-  constructor(private router: Router, private role: RoleService) {
+  constructor(private router: Router) {
   }
-
-
 
   ngOnInit() {
     if (localStorage.getItem('token')) {
       this.loggedIn = false;
-    }    
-    if(this.role){
-      this.userRole = this.role.getRole();
-      this.checkUser();
     }
+    this.userRole = localStorage.getItem('role');
+    this.checkUser();
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.loggedIn = true;
     this.router.navigate(['/login']);
   }

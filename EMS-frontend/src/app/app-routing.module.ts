@@ -10,7 +10,6 @@ import { AuthGuardService } from './route-guard/auth-guard.service';
 import { UpdateProfileComponent } from './home/update-profile/update-profile.component';
 import { UpdateUserdataComponent } from './home/update-userdata/update-userdata.component';
 import { ProjectComponent } from './home/project/project.component';
-import { AddProjectComponent } from './home/add-project/add-project.component';
 import { RegisterInAProjectComponent } from './home/register-in-a-project/register-in-a-project.component';
 
 const routes: Routes = [
