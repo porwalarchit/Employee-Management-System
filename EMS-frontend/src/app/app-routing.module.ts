@@ -24,7 +24,6 @@ const routes: Routes = [
       { path: 'userdata', component: UserdataComponent },
       { path: 'userdata/update/:userId', component: UpdateUserdataComponent },
       { path: 'projects', component: ProjectComponent },
-      { path: 'projects/addnewproject', component: AddProjectComponent },
       { path: 'addproject', component: RegisterInAProjectComponent }
     ]
   },
