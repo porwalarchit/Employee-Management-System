@@ -17,8 +17,8 @@
                 <div class="bio-graph-heading">
                     <ul style="list-style: none; padding-inline-start: 0px; margin-bottom: 0px;">
                         Projects :
-                        <li class="badge rounded-pill mx-1" *ngFor="let project of profileData.projects"
-                            [ngClass]="{'bg-success': project.status==='Current', 'bg-warning': project.status==='Previous'}">
+                        <li class="rounded-pill mx-1 badge-custom" *ngFor="let project of profileData.projects"
+                            [ngClass]="{'bg-danger': project.status==='Upcoming', 'bg-warning': project.status==='Previous'}">
                             {{project.projectName}}
                         </li>
                     </ul>
