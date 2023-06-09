@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from 'src/app/service/project.service';
 import { AddProjectComponent } from '../add-project/add-project.component';
+import { RegisterInAProjectComponent } from '../register-in-a-project/register-in-a-project.component';
 
 @Component({
   selector: 'app-project',
@@ -10,10 +11,9 @@ import { AddProjectComponent } from '../add-project/add-project.component';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent {
-  // isFormOpen: boolean = false;
-  // addProjectForm: FormGroup
   projectData: any = [];
   ngbModalRef: NgbModalRef;
+  addTeamMembers;
 
   constructor(private projectService: ProjectService, private modalService: NgbModal) { }
 
@@ -31,5 +31,10 @@ export class ProjectComponent {
 
   onClick(){
     this.ngbModalRef = this.modalService.open(AddProjectComponent);
+  }
+
+  addMembers(i){
+    this.ngbModalRef = this.modalService.open(RegisterInAProjectComponent);
+    this.ngbModalRef.componentInstance.details = this.projectData[i];
   }
 }
