@@ -34,14 +34,29 @@ public class ProjectController {
             // Error Handling of this part is remaining
             newEmpList.add(employeeService.findEmployeeByEmail(employee.getEmail()).get());
         }
-
-        // Use the below code to add one employee at a time in a project.
-        // Employee employee = theProject.getEmployees().;
-        // String email = theProject.getEmployees().get(0).getEmail();
-
         theProject.setEmployees(newEmpList);
-        return projectService.saveProject(theProject);
+        return projectService.saveProject(Optional.of(theProject));
     }
 
     // Create an PUT endpoint for Updating Project data.
+    @PutMapping("addmember")
+    public Project updateProject(@RequestBody Project theProject){
+//        System.out.println(theProject.getProjectId());
+//        System.out.println(projectService.getProjectDetails(theProject.getProjectId()));
+        Optional<Project> tempProj = projectService.getProjectDetails(theProject.getProjectId());
+//        System.out.println(tempProj);
+        tempProj.get().setProjectId(theProject.getProjectId());
+        tempProj.get().setProjectName(theProject.getProjectName());
+        tempProj.get().setProjectDesc(theProject.getProjectDesc());
+        tempProj.get().setStatus(theProject.getStatus());
+
+        List<Employee> newEmpList= new ArrayList<Employee>();
+        for (Employee employee : theProject.getEmployees()) {
+            // Error Handling of this part is remaining
+            newEmpList.add(employeeService.findEmployeeByEmail(employee.getEmail()).get());
+        }
+        tempProj.get().setEmployees(newEmpList);
+//        System.out.println(tempProj);
+        return projectService.saveProject(tempProj);
+    }
 }
