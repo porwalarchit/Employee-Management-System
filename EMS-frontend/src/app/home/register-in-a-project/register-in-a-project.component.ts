@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from 'src/app/service/project.service';
 
 @Component({
@@ -10,39 +11,36 @@ import { ProjectService } from 'src/app/service/project.service';
 })
 export class RegisterInAProjectComponent {
   projectData: any = [];
-  addProjectForm: FormGroup;
+  addMemberForm: FormGroup;
+  @Input() details: any;
 
-  constructor(private projectService: ProjectService, private route: Router) { }
+  constructor(private projectService: ProjectService, private route: Router, private ngbActiveModal: NgbActiveModal) { }
 
   ngOnInit(){
-    this.projectService.getAllProjects().subscribe(
-      (res)=>{
-        this.projectData = res;
-        console.log(res);
-      },(err)=>{
-        console.log(err);
-      }
-    )
-    this.addProjectForm = new FormGroup({
-      projectId: new FormControl(""),
-      projectName: new FormControl(""),
-      projectDesc: new FormControl(""),
-      status: new FormControl("")
+    console.log("Details: ",this.details);
+    
+    this.addMemberForm = new FormGroup({
+      projectId: new FormControl(this.details.projectId),
+      projectName: new FormControl(this.details.projectName),
+      projectDesc: new FormControl(this.details.projectDesc),
+      status: new FormControl(this.details.status),
+      employees: new FormControl(this.details.employees)
     })
   }
 
   closeForm() {
-    this.route.navigate(['projects']);
+    this.ngbActiveModal.close();
   }
 
   submitForm() {
     const projectDetails = {
-      projectId: this.addProjectForm.value.projectId,
-      projectName: this.addProjectForm.value.projectName,
-      projectDesc: this.addProjectForm.value.projectDesc,
-      status: this.addProjectForm.value.status,
-      employees: []
+      projectId: this.addMemberForm.value.projectId,
+      projectName: this.addMemberForm.value.projectName,
+      projectDesc: this.addMemberForm.value.projectDesc,
+      status: this.addMemberForm.value.status,
+      employees: [{email: this.addMemberForm.value.employees} ]
     }
+    console.log(projectDetails);
     this.projectService.addProject(projectDetails).subscribe(
       (res) => {
         console.log(res);
