@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from 'src/app/service/project.service';
+import { AddProjectComponent } from '../add-project/add-project.component';
 
 @Component({
   selector: 'app-project',
@@ -11,8 +13,9 @@ export class ProjectComponent {
   // isFormOpen: boolean = false;
   // addProjectForm: FormGroup
   projectData: any = [];
+  ngbModalRef: NgbModalRef;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.projectService.getAllProjects().subscribe(
@@ -24,38 +27,9 @@ export class ProjectComponent {
         console.log(err);
       }
     )
-
-    // this.addProjectForm = new FormGroup({
-    //   projectId: new FormControl(""),
-    //   projectName: new FormControl(""),
-    //   projectDesc: new FormControl(""),
-    //   status: new FormControl("")
-    // })
   }
 
-  // openForm() {
-  //   this.isFormOpen = true;
-  // }
-
-  // closeForm() {
-  //   this.isFormOpen = false;
-  // }
-
-  // submitForm() {
-  //   const projectDetails = {
-  //     projectId: this.addProjectForm.value.projectId,
-  //     projectName: this.addProjectForm.value.projectName,
-  //     projectDesc: this.addProjectForm.value.projectDesc,
-  //     status: this.addProjectForm.value.status,
-  //     employees: []
-  //   }
-  //   this.projectService.addProject(projectDetails).subscribe(
-  //     (res) => {
-  //       this.isFormOpen = false;
-  //       console.log(res);
-  //     }, (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+  onClick(){
+    this.ngbModalRef = this.modalService.open(AddProjectComponent);
+  }
 }
