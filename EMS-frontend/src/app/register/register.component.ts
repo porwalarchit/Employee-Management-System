@@ -20,7 +20,7 @@ export class RegisterComponent {
       email: [''],
       roles: ['EMPLOYEE'], // Set 'EMPLOYEE' as the default selected value
       employeeType: 1,
-      password: ['']
+      password: ['argusadmin']
     });
   }
 
@@ -46,14 +46,14 @@ export class RegisterComponent {
     }
     console.log(newUser);
     
-    this.registerservice.registerUser(newUser).subscribe(
-      (res)=>{
-        console.log(res);
-      },
-      (err)=>{
-        console.log(err);
-      }
-    )
+    // this.registerservice.registerUser(newUser).subscribe(
+    //   (res)=>{
+    //     console.log(res);
+    //   },
+    //   (err)=>{
+    //     console.log(err);
+    //   }
+    // )
   }
   
 
