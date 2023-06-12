@@ -40,8 +40,8 @@ public class EmployeeController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("employee/{id}")
-    public Optional<Employee> findEmployeeById(@PathVariable int id){
-        return employeeService.findEmployeeById(id);
+    public Employee findEmployeeById(@PathVariable int id){
+        return employeeService.findEmployeeById(id).get();
     }
 
     @PostMapping("/dashboard")
