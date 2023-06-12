@@ -43,9 +43,9 @@ public class EmployeeDetails {
     @Column(name = "salary")
     private int salary;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
-    @JsonIgnoreProperties(value = {"employeeDetails"}, allowSetters = true)
+//    @JsonIgnoreProperties(value = {"employeeDetails"}, allowSetters = true)
     private Employee employee;
 
 }

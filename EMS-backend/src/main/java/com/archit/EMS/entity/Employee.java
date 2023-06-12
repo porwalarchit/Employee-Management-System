@@ -38,19 +38,19 @@ public class Employee {
     @Column(name = "roles")
     private String roles;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = "email", allowSetters = true)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = "employee", allowSetters = true)
     private EmployeeDetails employeeDetails;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "dept_id_fk", referencedColumnName = "dept_id")
     private Department department;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees", fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = "employees", allowSetters = true)
     private List<Project> projects;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value="employee", allowSetters = true)
     private List<EmployeeReport> employeeReport;
 
