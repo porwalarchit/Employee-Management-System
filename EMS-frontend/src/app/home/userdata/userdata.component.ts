@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateProfileService } from 'src/app/service/update-profile.service';
 import { UserService } from 'src/app/service/user.service';
+import { AssignMenteeComponent } from '../assign-mentee/assign-mentee.component';
 
 @Component({
   selector: 'app-userdata',
@@ -15,8 +17,9 @@ export class UserdataComponent {
 
   isEditing: boolean = false;
   designationValue: string = '';
+  ngbModalRef: NgbModalRef;
 
-  constructor(private userService: UserService, private updateService: UpdateProfileService,private route: Router) {
+  constructor(private userService: UserService, private updateService: UpdateProfileService,private route: Router, private modalService: NgbModal) {
 
   }
 
@@ -26,11 +29,6 @@ export class UserdataComponent {
       console.log(this.userData);
     })
   }
-
-  editDetails(userId) {
-    this.route.navigate(['userdata/update', userId]);
-  }
-
 
   enableEdit(data) {
     data.isEditing = true;
@@ -77,4 +75,8 @@ export class UserdataComponent {
     data.isEditing = false;
   }
 
+  assignMentee(i){
+    this.ngbModalRef = this.modalService.open(AssignMenteeComponent);
+    this.ngbModalRef.componentInstance.employee = this.userData[i];
+  }
 }
