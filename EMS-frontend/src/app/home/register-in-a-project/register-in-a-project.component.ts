@@ -13,19 +13,20 @@ export class RegisterInAProjectComponent {
   projectData: any = [];
   addMemberForm: FormGroup;
   @Input() details: any;
+  emailList;
 
   constructor(private projectService: ProjectService, private route: Router, private ngbActiveModal: NgbActiveModal) { }
 
-  ngOnInit(){
-    console.log("Details: ",this.details);
-    
+  ngOnInit() {
     this.addMemberForm = new FormGroup({
       projectId: new FormControl(this.details.projectId),
       projectName: new FormControl(this.details.projectName),
       projectDesc: new FormControl(this.details.projectDesc),
       status: new FormControl(this.details.status),
-      employees: new FormControl(this.details.employees)
+      employees: new FormControl(this.details.employees),
+      newEmployees: new FormControl("")
     })
+    this.emailList = this.addMemberForm.value.employees.map((employee) => employee.email);
   }
 
   closeForm() {
@@ -33,15 +34,17 @@ export class RegisterInAProjectComponent {
   }
 
   submitForm() {
+    let updatedEmployees =  this.emailList.map((email) => ({ email }))
+    updatedEmployees.push({email :this.addMemberForm.value.newEmployees});
+    
     const projectDetails = {
       projectId: this.addMemberForm.value.projectId,
       projectName: this.addMemberForm.value.projectName,
       projectDesc: this.addMemberForm.value.projectDesc,
       status: this.addMemberForm.value.status,
-      employees: [{email: this.addMemberForm.value.employees} ]
+      employees: updatedEmployees
     }
-    console.log(projectDetails);
-    this.projectService.addProject(projectDetails).subscribe(
+    this.projectService.addMember(projectDetails).subscribe(
       (res) => {
         console.log(res);
       }, (err) => {
