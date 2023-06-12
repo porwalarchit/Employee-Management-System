@@ -1,0 +1,34 @@
+<div class="model-container">
+    <div class="modal-content">
+        <div class="modal-header" >
+            <h4 id="myModalLabel" class="modal-title">Assign Mentee</h4>
+            <button type="button" (click)="closeForm()" data-bs-dismiss="modal" aria-label="Close"
+                class="btn-close"></button>
+        </div>
+        <form [formGroup]="assignMenteeForm" novalidate="" autocomplete="off" class="ng-pristine ng-invalid ng-touched"
+            (ngSubmit)="submitForm()">
+            <div class="modal-body">
+                <div class="form-group row mt-2">
+                    <label class="col-12 col-form-label required">Mentor Id</label>
+                    <div class="col-12 form-control ng-untouched ng-pristine ng-valid" style="margin-left: 11px; width: 95%;">
+                        {{employee.id}}
+                    </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <label class="col-12 col-form-label required">Mentee Email Address</label>
+                    <div class="col-12">
+                        <input type="text" placeholder="Ex: architporwal@gmail.com" name="employees" required=""
+                            class="form-control ng-untouched ng-pristine ng-invalid" aria-expanded="false"
+                            aria-autocomplete="list" formControlName="menteeEmail">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer my-2">
+                <button type="button" (click)="closeForm()" data-bs-dismiss="modal"
+                    class="btn btn-radius custom-gray me-2"> Close </button>
+                <button type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-radius">Submit</button>
+            </div>
+        </form>
+        <button (click)="viewMentor()">View Details</button>
+    </div>
+</div>
