@@ -45,8 +45,14 @@ public class EmployeeController {
     }
 
     @PostMapping("/dashboard")
-    public Optional<Employee> findEmployeeByEmail(@RequestBody EmployeeEmail email){
-        return employeeService.findEmployeeByEmail(email.getEmail());
+    public Employee findEmployeeByEmail(@RequestBody EmployeeEmail email){
+//        Optional<Employee> tempEmp = employeeService.findEmployeeByEmail(email.getEmail());
+//        if(tempEmp.isPresent()){
+////            Hibernate.initialize(tempEmp.get().getEmployeeDetails());
+//            return tempEmp.get();
+//        }
+//        throw new EmployeeNotExists("Not Found");
+        return employeeService.findEmployeeByEmail(email.getEmail()).get();
     }
 
     @PostMapping("/addEmployee")
@@ -54,13 +60,6 @@ public class EmployeeController {
         String pass = theEmployee.getPassword();
         theEmployee.setPassword(passwordEncoder.encode((pass)));
         theEmployee.setDepartment(departmentService.departmentById(theEmployee.getDepartment().getDeptId()).get());
-//        Employee employee = new Employee(
-//                theEmployee.getFirstName(),
-//                theEmployee.getLastName(),
-//                theEmployee.getEmail(),
-//                passwordEncoder.encode(theEmployee.getPassword()),
-//                theEmployee.getRoles()
-//        );
         return employeeService.saveEmployee(theEmployee);
     }
 
@@ -78,34 +77,4 @@ public class EmployeeController {
             throw new UsernameNotFoundException("invalid user request !");
         }
     }
-
-
-//    @PostMapping("/signup")
-//    public User addUser(@RequestBody User theUser){
-////        System.out.println(theUser.getEmail());
-//        String dbUserEmail = theUser.getEmail();
-////        System.out.println(userService.isEmailExists(dbUserEmail));
-//
-//        if(userService.isEmailExists(dbUserEmail)){
-//            String s = "User already exists";
-//            throw new UserAlreadyExistsException("User already exists, try login first!!");
-//        }
-//
-//
-//    }
-
-//    @PostMapping("/login")
-//    public String userLogin(@RequestBody UserCredentials userCredentials){
-//        System.out.println(userService.isEmailExists(userCredentials.getEmail()));
-//        if(userService.isEmailExists(userCredentials.getEmail())){
-//            User user = userService.findUserByEmail(userCredentials.getEmail());
-//            System.out.println(user.getPassword().equals(userCredentials.getPassword()));
-//            if (user != null && (user.getPassword().equals(userCredentials.getPassword())) ) {
-//                return "Login successful";
-//            } else {
-//                return "Invalid username or password";
-//            }
-//        }
-//        throw new UserNotExists("User Not found!!");
-//    }
 }

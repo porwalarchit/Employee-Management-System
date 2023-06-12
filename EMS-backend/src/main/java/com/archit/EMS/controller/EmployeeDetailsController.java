@@ -23,8 +23,8 @@ public class EmployeeDetailsController {
     private EmployeeService employeeService;
 
     @GetMapping("{id}")
-    public Optional<EmployeeDetails> getDetails(@PathVariable int id){
-        return employeeDetailsService.getEmployeeDetails(id);
+    public EmployeeDetails getDetails(@PathVariable int id){
+        return employeeDetailsService.getEmployeeDetails(id).get();
     }
 
     @PostMapping("/add")
