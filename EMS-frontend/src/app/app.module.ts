@@ -17,6 +17,7 @@ import { UpdateUserdataComponent } from './home/update-userdata/update-userdata.
 import { ProjectComponent } from './home/project/project.component';
 import { AddProjectComponent } from './home/add-project/add-project.component';
 import { RegisterInAProjectComponent } from './home/register-in-a-project/register-in-a-project.component';
+import { AssignMenteeComponent } from './home/assign-mentee/assign-mentee.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { RegisterInAProjectComponent } from './home/register-in-a-project/regist
     ProjectComponent,
     AddProjectComponent,
     RegisterInAProjectComponent,
+    AssignMenteeComponent,
   ],
   imports: [
     FormsModule,

@@ -25,7 +25,9 @@ public class MentorController {
     }
 
     @GetMapping("")
-    public Optional<Mentor> getMentorDetails(@RequestBody Mentor theMentor){
-        return mentorService.getMentorDetailsById(theMentor.getMentorId());
+    public Mentor getMentorDetails(@RequestBody Mentor theMentor){
+//        System.out.println("Mentor: " + theMentor);
+//        System.out.println("Mentor ID: " + theMentor.getMentorId());
+        return mentorService.getMentorDetailsById(theMentor.getMentorId()).get();
     }
 }

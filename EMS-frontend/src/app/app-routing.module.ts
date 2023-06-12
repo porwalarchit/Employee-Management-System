@@ -20,7 +20,6 @@ const routes: Routes = [
       { path: 'profile/update', component: UpdateProfileComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'userdata', component: UserdataComponent },
-      { path: 'userdata/update/:userId', component: UpdateUserdataComponent },
       { path: 'projects', component: ProjectComponent }
     ]
   },
