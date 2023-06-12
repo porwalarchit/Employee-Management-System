@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from 'src/app/service/project.service';
 import { AddProjectComponent } from '../add-project/add-project.component';
@@ -19,21 +18,22 @@ export class ProjectComponent {
 
   ngOnInit() {
     this.projectService.getAllProjects().subscribe(
-      (res)=>{
+      (res) => {
         this.projectData = res;
+        this.projectData.sort((a, b) => a.projectId- b.projectId);
         console.log(res);
       },
-      (err)=>{
+      (err) => {
         console.log(err);
       }
     )
   }
 
-  onClick(){
+  onClick() {
     this.ngbModalRef = this.modalService.open(AddProjectComponent);
   }
 
-  addMembers(i){
+  addMembers(i) {
     this.ngbModalRef = this.modalService.open(RegisterInAProjectComponent);
     this.ngbModalRef.componentInstance.details = this.projectData[i];
   }
