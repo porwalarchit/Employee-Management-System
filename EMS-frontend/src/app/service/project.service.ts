@@ -18,4 +18,8 @@ export class ProjectService {
   addProject(projectDetails): Observable<any> {
     return this.http.post<any>(this.BASE_URL + '/api/project/newproject', projectDetails);
   }
+
+  addMember(updatedDetails): Observable<any>{
+    return this.http.put<any>(this.BASE_URL + '/api/project/addmember', updatedDetails);
+  }
 }
