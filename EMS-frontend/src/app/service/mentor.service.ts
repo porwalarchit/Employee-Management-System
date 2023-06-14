@@ -14,7 +14,7 @@ export class MentorService {
     return this.http.post<any>(this.BASE_URL + '/api/mentor', menteeDetails);
   }
 
-  getMenteeDetails(mentorPayload){
-    return this.http.get<any>(this.BASE_URL + '/api/mentor', mentorPayload);
+  getMenteeDetails(mentorId:number){
+    return this.http.get<any>(this.BASE_URL + '/api/mentor/' +mentorId);
   }
 }
