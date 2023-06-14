@@ -19,14 +19,15 @@
                     <div class="col-12">
                         <input type="text" placeholder="Ex: architporwal@gmail.com" name="employees" required=""
                             class="form-control ng-untouched ng-pristine ng-invalid" aria-expanded="false"
-                            aria-autocomplete="list" formControlName="newEmployees">
+                            aria-autocomplete="list" formControlName="newEmployees" required email>
                     </div>
+                    <small *ngIf="addMemberForm.get('newEmployees').invalid && addMemberForm.get('newEmployees').touched">First name is a required field</small>
                 </div>
             </div>
             <div class="modal-footer my-2">
                 <button type="button" (click)="closeForm()" data-bs-dismiss="modal"
                     class="btn btn-radius custom-gray me-2"> Close </button>
-                <button type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-radius">Add Project</button>
+                <button type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-radius" [disabled]="addMemberForm.invalid">Add Project</button>
             </div>
         </form>
     </div>
