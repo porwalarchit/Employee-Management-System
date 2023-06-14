@@ -24,10 +24,10 @@ public class MentorController {
         return mentorService.saveMentorDetails(theMentor);
     }
 
-    @GetMapping("")
-    public Mentor getMentorDetails(@RequestBody Mentor theMentor){
+    @GetMapping("{id}")
+    public Mentor getMentorDetails(@PathVariable int id){
 //        System.out.println("Mentor: " + theMentor);
 //        System.out.println("Mentor ID: " + theMentor.getMentorId());
-        return mentorService.getMentorDetailsById(theMentor.getMentorId()).get();
+        return mentorService.getMentorDetailsById(id).get();
     }
 }
