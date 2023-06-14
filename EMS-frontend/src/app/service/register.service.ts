@@ -15,8 +15,6 @@ export class RegisterService{
 
   
   registerUser(newUser): Observable<any> {
-    // console.log(newUser);
-    
     return this.http.post<any>(this.BASE_URL + '/api/addEmployee', newUser);
   }
 }

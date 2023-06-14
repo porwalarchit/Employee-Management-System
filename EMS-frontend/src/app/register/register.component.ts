@@ -43,17 +43,15 @@ export class RegisterComponent {
       password: this.registerForm.value.password,
       roles: "ROLE_"+this.registerForm.value.roles,
       department:{deptId: this.registerForm.value.employeeType}
-    }
-    console.log(newUser);
-    
-    // this.registerservice.registerUser(newUser).subscribe(
-    //   (res)=>{
-    //     console.log(res);
-    //   },
-    //   (err)=>{
-    //     console.log(err);
-    //   }
-    // )
+    }    
+    this.registerservice.registerUser(newUser).subscribe(
+      (res)=>{
+        console.log(res);
+      },
+      (err)=>{
+        console.log(err);
+      }
+    )
   }
   
 
