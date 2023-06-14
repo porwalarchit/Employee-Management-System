@@ -4,6 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateProfileService } from 'src/app/service/update-profile.service';
 import { UserService } from 'src/app/service/user.service';
 import { AssignMenteeComponent } from '../assign-mentee/assign-mentee.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-userdata',
@@ -19,7 +20,7 @@ export class UserdataComponent {
   designationValue: string = '';
   ngbModalRef: NgbModalRef;
 
-  constructor(private userService: UserService, private updateService: UpdateProfileService,private route: Router, private modalService: NgbModal) {
+  constructor(private userService: UserService, private updateService: UpdateProfileService,private route: Router, private modalService: NgbModal, private taostr: ToastrService) {
 
   }
 
@@ -50,8 +51,10 @@ export class UserdataComponent {
         (res)=>{
           this.userData[i] = data;
           console.log(res);
+          this.taostr.success("Designation updated successfully", "Success");
         }, (err) => {
           console.log(err);
+          this.taostr.error("Some error occured", "Error");
         }
       )
     }
@@ -64,8 +67,10 @@ export class UserdataComponent {
         (res) => {
           this.userData[i] = data;
           console.log(res);
+          this.taostr.success("Designation added successfully", "Success");
         }, (err) => {
           console.log(err);
+          this.taostr.error("Some error occured", "Error");
         }
       );
     }

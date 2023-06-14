@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit{
   userSuperAdmin: Boolean = false;
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private taostr: ToastrService) {
   }
 
   ngOnInit() {
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit{
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     this.loggedIn = true;
+    this.taostr.success("Logged out successfully", "Success");
     this.router.navigate(['/login']);
   }
 

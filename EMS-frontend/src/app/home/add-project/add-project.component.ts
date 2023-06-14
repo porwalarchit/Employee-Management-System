@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/app/service/project.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { ProjectService } from 'src/app/service/project.service';
 export class AddProjectComponent {
   addProjectForm: FormGroup;
 
-  constructor(private projectService: ProjectService, private route: Router, private ngbActiveModal: NgbActiveModal) { }
+  constructor(private projectService: ProjectService, private route: Router, private ngbActiveModal: NgbActiveModal, private taostr: ToastrService) { }
 
   ngOnInit(){
     this.addProjectForm = new FormGroup({
@@ -38,9 +39,11 @@ export class AddProjectComponent {
     this.projectService.addProject(projectDetails).subscribe(
       (res) => {
         console.log(res);
+        this.taostr.success("Project added successfully", "Success");
         this.route.navigate(['/projects']);
       }, (err) => {
         console.log(err);
+        this.taostr.error("Some Error occured", "Error");
       }
     );
   }

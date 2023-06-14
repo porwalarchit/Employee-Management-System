@@ -4,6 +4,7 @@ import { LoginService } from '../service/login.service';
 import jwt_decode from 'jwt-decode';
 import { JwtService } from '../service/jwt.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private loginService: LoginService, private jwtService: JwtService, private route: Router){}
+  constructor(private loginService: LoginService, private jwtService: JwtService, private route: Router, private taostr: ToastrService){}
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
@@ -29,11 +30,13 @@ export class LoginComponent {
       }
       localStorage.setItem("token", res["token"]);
       localStorage.setItem("role", this.jwtService?.getDecodedData()['role']);
-
+      
+      this.taostr.success("Login Successful", "Success");
       this.route.navigate(['/profile']);
 
     }, (err)=>{
-      alert(err.error.message);
+      // alert(err.error.message);
+      this.taostr.error("Please check your Email and password", "Invalid Credentials");
       console.log(err.error.message);
     });
   }

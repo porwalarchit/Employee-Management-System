@@ -3,6 +3,8 @@ import { Form, FormControl, FormGroup, FormGroupDirective, FormBuilder } from '@
 import { JwtService } from '../service/jwt.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterService } from '../service/register.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,7 @@ import { RegisterService } from '../service/register.service';
 })
 export class RegisterComponent {
 
-  constructor(private jwtService: JwtService, private registerservice: RegisterService, private formBuilder: FormBuilder ) { }
+  constructor(private jwtService: JwtService, private registerservice: RegisterService, private formBuilder: FormBuilder, private route: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -47,9 +49,12 @@ export class RegisterComponent {
     this.registerservice.registerUser(newUser).subscribe(
       (res)=>{
         console.log(res);
+        this.toastr.success("Employee Added Successfully", "Success");
+        this.route.navigateByUrl("/userdata");
       },
       (err)=>{
         console.log(err);
+        this.toastr.success("Some error occured", "Error");
       }
     )
   }

@@ -18,9 +18,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(){
     this.profile.getProfile().subscribe((res)=>{
-      // console.log(res);
       this.profileData = res;
-      // console.log(this.profileData);
       if(this.profileData.employeeDetails?.gender === 'Female'){
         this.isMale = false;
       }
