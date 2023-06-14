@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { MentorService } from 'src/app/service/mentor.service';
@@ -15,14 +15,14 @@ export class AssignMenteeComponent {
   assignMentee: boolean = false;
   viewMenteeDetails: boolean = false
 
-  constructor(private ngbActiveModal: NgbActiveModal, private mentorService: MentorService, private taostr: ToastrService){
+  constructor(private ngbActiveModal: NgbActiveModal, private mentorService: MentorService, private taostr: ToastrService) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.assignMenteeForm = new FormGroup({
       mentorId: new FormControl(this.employee.id),
-      menteeEmail: new FormControl("")
+      menteeEmail: new FormControl("", [Validators.required, Validators.email])
     })
 
     // this.mentorService.getMenteeDetails(+this.employee.id).subscribe(
@@ -37,19 +37,19 @@ export class AssignMenteeComponent {
     this.ngbActiveModal.close();
   }
 
-  submitForm(){
+  submitForm() {
     const menteeDetails = {
       mentorId: this.assignMenteeForm.value.mentorId,
       employee: {
-        email : this.assignMenteeForm.value.menteeEmail
+        email: this.assignMenteeForm.value.menteeEmail
       }
     }
 
     this.mentorService.assignMentorToMentee(menteeDetails).subscribe(
-      (res)=>{
+      (res) => {
         console.log(res);
         this.taostr.success("Mentee added successfully", "Success");
-      }, (err)=>{
+      }, (err) => {
         console.log(err);
         this.taostr.error("Some error occured", "Error");
       }

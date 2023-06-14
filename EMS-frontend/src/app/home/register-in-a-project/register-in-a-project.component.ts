@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -25,7 +25,7 @@ export class RegisterInAProjectComponent {
       projectDesc: new FormControl(this.details.projectDesc),
       status: new FormControl(this.details.status),
       employees: new FormControl(this.details.employees),
-      newEmployees: new FormControl("")
+      newEmployees: new FormControl("", [Validators.required , Validators.email])
     })
     this.emailList = this.addMemberForm.value.employees.map((employee) => employee.email);
   }

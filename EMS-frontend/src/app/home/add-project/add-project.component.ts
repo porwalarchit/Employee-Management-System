@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -17,10 +17,10 @@ export class AddProjectComponent {
 
   ngOnInit(){
     this.addProjectForm = new FormGroup({
-      projectId: new FormControl(""),
-      projectName: new FormControl(""),
+      projectId: new FormControl("", Validators.required),
+      projectName: new FormControl("", Validators.required),
       projectDesc: new FormControl(""),
-      status: new FormControl("")
+      status: new FormControl("", Validators.required)
     })
   }
 

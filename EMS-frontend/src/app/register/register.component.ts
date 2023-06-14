@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Form, FormControl, FormGroup, FormGroupDirective, FormBuilder } from '@angular/forms';
+import { Form, FormControl, FormGroup, FormGroupDirective, FormBuilder, Validators } from '@angular/forms';
 import { JwtService } from '../service/jwt.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterService } from '../service/register.service';
@@ -27,10 +27,10 @@ export class RegisterComponent {
   }
 
   registerForm: FormGroup = new FormGroup({
-    firstName: new FormControl(""),
-    lastName: new FormControl(""),
-    email: new FormControl(""),
-    password: new FormControl(""),
+    firstName: new FormControl("", Validators.required),
+    lastName: new FormControl("", Validators.required),
+    email: new FormControl("", [Validators.required, Validators.email]),
+    password: new FormControl("", Validators.required),
     roles: new FormControl(""),
     employeeType: new FormControl("")
   })
@@ -53,8 +53,7 @@ export class RegisterComponent {
         this.route.navigateByUrl("/userdata");
       },
       (err)=>{
-        console.log(err);
-        this.toastr.success("Some error occured", "Error");
+        this.toastr.error(err.error.message, "Error");
       }
     )
   }
