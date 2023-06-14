@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnInit, NgZone } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ProfileService } from 'src/app/service/profile.service';
 import { UpdateProfileService } from 'src/app/service/update-profile.service';
 
@@ -18,12 +20,12 @@ export class UpdateProfileComponent implements OnInit {
 
   updateDetailsForm: FormGroup;
 
-  constructor(private profile: ProfileService, private http: HttpClient, private updateprofile: UpdateProfileService) {
+  constructor(private profile: ProfileService, private http: HttpClient, private updateprofile: UpdateProfileService, private router: Router,
+    private ngZone: NgZone, private toastr: ToastrService) {
   }
 
   ngOnInit() {
     this.profile.getProfile().subscribe((res) => {
-      // console.log(res);
       this.profileData = res;
       console.log(this.profileData);
       if (this.profileData.employeeDetails?.gender === 'Female') {
@@ -53,9 +55,11 @@ export class UpdateProfileComponent implements OnInit {
       this.updateprofile.updateProfile(updatedDetails).subscribe(
         (res) => {
           console.log(res);
+          this.toastr.success("Profile updated Sucessfully!", "Update Profile");
+          this.redirectTo('/profile');
         }, (err) => {
           console.log(err);
-
+          this.toastr.error("Some Error occured!", "Update Profile");
         }
       );
     }
@@ -70,14 +74,17 @@ export class UpdateProfileComponent implements OnInit {
       this.updateprofile.addDetails(newDetails).subscribe(
         (res) => {
           console.log(res);
+          this.toastr.success("Profile updated Sucessfully!", "Update Profile");
+          this.redirectTo('/profile');
         }, (err) => {
           console.log(err);
-
+          this.toastr.error("Some Error occured!", "Update Profile");
         }
       );
     }
-
-
   }
 
+  redirectTo(url: string) {
+    this.ngZone.run(() => this.router.navigateByUrl(url));
+  }
 }
