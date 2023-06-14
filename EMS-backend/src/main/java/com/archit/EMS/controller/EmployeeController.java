@@ -4,6 +4,7 @@ import com.archit.EMS.dto.EmployeeEmail;
 import com.archit.EMS.dto.TokenResponse;
 import com.archit.EMS.dto.EmployeeCredentials;
 import com.archit.EMS.entity.Employee;
+import com.archit.EMS.exceptions.exception.EmployeeAlreadyExistsException;
 import com.archit.EMS.service.DepartmentService;
 import com.archit.EMS.service.JwtService;
 import com.archit.EMS.service.EmployeeService;
@@ -57,6 +58,9 @@ public class EmployeeController {
 
     @PostMapping("/addEmployee")
     public Employee saveEmployee(@RequestBody Employee theEmployee){
+        if(employeeService.isEmailExists(theEmployee.getEmail())){
+            throw new EmployeeAlreadyExistsException("Email already exists, try login!!");
+        }
         String pass = theEmployee.getPassword();
         theEmployee.setPassword(passwordEncoder.encode((pass)));
         theEmployee.setDepartment(departmentService.departmentById(theEmployee.getDepartment().getDeptId()).get());
@@ -74,7 +78,7 @@ public class EmployeeController {
         if (authentication.isAuthenticated()) {
             return new ResponseEntity<TokenResponse>(new TokenResponse(jwtService.generateToken(employeeCredentials.getEmail())), HttpStatus.OK) ;
         } else {
-            throw new UsernameNotFoundException("invalid user request !");
+            throw new UsernameNotFoundException("Invalid User Credentials !");
         }
     }
 }
