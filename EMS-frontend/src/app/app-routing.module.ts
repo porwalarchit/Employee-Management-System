@@ -8,7 +8,6 @@ import { ProfileComponent } from './home/profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthGuardService } from './route-guard/auth-guard.service';
 import { UpdateProfileComponent } from './home/update-profile/update-profile.component';
-import { UpdateUserdataComponent } from './home/update-userdata/update-userdata.component';
 import { ProjectComponent } from './home/project/project.component';
 import { EmployeeReportComponent } from './home/employee-report/employee-report.component';
 

@@ -13,7 +13,6 @@ import { ProfileComponent } from './home/profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 import { UpdateProfileComponent } from './home/update-profile/update-profile.component';
-import { UpdateUserdataComponent } from './home/update-userdata/update-userdata.component';
 import { ProjectComponent } from './home/project/project.component';
 import { AddProjectComponent } from './home/add-project/add-project.component';
 import { RegisterInAProjectComponent } from './home/register-in-a-project/register-in-a-project.component';
@@ -33,7 +32,6 @@ import { ToastrModule } from 'ngx-toastr';
     ProfileComponent,
     ErrorComponent,
     UpdateProfileComponent,
-    UpdateUserdataComponent,
     ProjectComponent,
     AddProjectComponent,
     RegisterInAProjectComponent,
@@ -51,7 +49,6 @@ import { ToastrModule } from 'ngx-toastr';
       positionClass: "toast-top-right",
       preventDuplicates : true,
       timeOut: 2500, 
-      closeButton: true
     })
   ],
   providers: [{
