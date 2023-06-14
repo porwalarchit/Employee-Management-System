@@ -18,6 +18,9 @@ import { ProjectComponent } from './home/project/project.component';
 import { AddProjectComponent } from './home/add-project/add-project.component';
 import { RegisterInAProjectComponent } from './home/register-in-a-project/register-in-a-project.component';
 import { AssignMenteeComponent } from './home/assign-mentee/assign-mentee.component';
+import { EmployeeReportComponent } from './home/employee-report/employee-report.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -35,13 +38,21 @@ import { AssignMenteeComponent } from './home/assign-mentee/assign-mentee.compon
     AddProjectComponent,
     RegisterInAProjectComponent,
     AssignMenteeComponent,
+    EmployeeReportComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-top-right",
+      preventDuplicates : true,
+      timeOut: 2500, 
+      closeButton: true
+    })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
