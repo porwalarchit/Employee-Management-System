@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light mx-4 ">
   <div class="container">
-    <a class="navbar-brand me-2">
+    <a class="navbar-brand me-2" routerLink="/profile">
       <img src="https://intranet.argusoft.com/ems/assets/images/logo.png" alt="EMS Logo" loading="lazy" style="margin-top: -1px;" />
     </a>
 
@@ -23,6 +23,9 @@
         </li>
         <li class="nav-item mx-1" *ngIf="!userEmployee">
           <a routerLinkActive="active" class="nav-link custom-nav" routerLink="/projects">Projects</a>
+        </li>
+        <li class="nav-item mx-1" >
+          <a routerLinkActive="active" class="nav-link custom-nav" routerLink="/reports">Employee Report</a>
         </li>
       </ul>
       <!-- Left links -->
