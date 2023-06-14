@@ -50,7 +50,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/report/addreport").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/report/{id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/mentor").authenticated()
-                        .requestMatchers(HttpMethod.GET, "/api/mentor").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/mentor/{id}").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/mentor/feedback/{id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/mentor/feedback").authenticated()
                         )
