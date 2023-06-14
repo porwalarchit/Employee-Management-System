@@ -1,5 +1,6 @@
-package com.archit.EMS.exceptions;
+package com.archit.EMS.exceptions.controllerAdvice;
 
+import com.archit.EMS.exceptions.exception.EmployeeErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

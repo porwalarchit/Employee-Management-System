@@ -1,4 +1,4 @@
-package com.archit.EMS.exceptions;
+package com.archit.EMS.exceptions.exception;
 
 public class EmployeeErrorResponse {
     private int status;
