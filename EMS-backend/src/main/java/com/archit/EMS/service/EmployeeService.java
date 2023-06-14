@@ -13,4 +13,6 @@ public interface EmployeeService {
     Optional<Employee> findEmployeeByEmail(String email);
 
     Optional<Employee> findEmployeeById(int id);
+
+    boolean isEmailExists(String email);
 }

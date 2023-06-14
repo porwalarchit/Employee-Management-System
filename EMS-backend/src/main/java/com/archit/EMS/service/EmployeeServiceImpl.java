@@ -34,4 +34,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 //        System.out.println(employeeRepository.findById(id));
         return employeeRepository.findById(id);
     }
+
+    @Override
+    public boolean isEmailExists(String email) {
+        return employeeRepository.existsByEmail(email);
+    }
 }
