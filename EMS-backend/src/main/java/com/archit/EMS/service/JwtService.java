@@ -62,6 +62,7 @@ public class JwtService {
               .setClaims(extraClaims)
               .setSubject(email)
               .claim("role", employeeService.findEmployeeByEmail(email).get().getRoles().toString())
+              .claim("id", employeeService.findEmployeeByEmail(email).get().getId())
               .setIssuedAt(new Date(System.currentTimeMillis()))
               .setExpiration(new Date(System.currentTimeMillis() + 86400000))
               .signWith(getSignInKey(), SignatureAlgorithm.HS256)
