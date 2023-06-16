@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,10 +12,11 @@ import { ProjectService } from 'src/app/service/project.service';
 })
 export class AddProjectComponent {
   addProjectForm: FormGroup;
+  @Input() projects;
 
-  constructor(private projectService: ProjectService, private route: Router, private ngbActiveModal: NgbActiveModal, private taostr: ToastrService) { }
+  constructor(private projectService: ProjectService ,private router: Router, private ngbActiveModal: NgbActiveModal, private taostr: ToastrService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.addProjectForm = new FormGroup({
       projectId: new FormControl("", Validators.required),
       projectName: new FormControl("", Validators.required),
@@ -40,7 +41,9 @@ export class AddProjectComponent {
       (res) => {
         console.log(res);
         this.taostr.success("Project added successfully", "Success");
-        this.route.navigate(['/projects']);
+        this.projects.push(res);
+        // this.router.navigateByUrl("/profile");
+        this.ngbActiveModal.close();
       }, (err) => {
         console.log(err);
         this.taostr.error("Some Error occured", "Error");

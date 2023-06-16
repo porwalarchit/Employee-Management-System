@@ -31,6 +31,7 @@ export class ProjectComponent {
 
   onClick() {
     this.ngbModalRef = this.modalService.open(AddProjectComponent);
+    this.ngbModalRef.componentInstance.projects = this.projectData;
   }
 
   addMembers(i) {
