@@ -6,6 +6,7 @@ import com.archit.EMS.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,5 +29,10 @@ public class EmployeeReportController {
     @GetMapping("{id}")
     public Optional<EmployeeReport> getReport(@PathVariable int id){
         return employeeReportService.getEmployeeReport(id);
+    }
+
+    @GetMapping("/all/{empId}")
+    public List<EmployeeReport> getReports(@PathVariable int empId){
+        return employeeReportService.getEmployeeReportsByEmpId(empId);
     }
 }
