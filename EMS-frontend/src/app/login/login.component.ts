@@ -30,6 +30,7 @@ export class LoginComponent {
       }
       localStorage.setItem("token", res["token"]);
       localStorage.setItem("role", this.jwtService?.getDecodedData()['role']);
+      localStorage.setItem("empId", this.jwtService?.getDecodedData()['id']);
       
       this.taostr.success("Login Successful", "Success");
       this.route.navigate(['/profile']);
