@@ -4,6 +4,8 @@ import com.archit.EMS.entity.Mentor;
 import com.archit.EMS.service.EmployeeService;
 import com.archit.EMS.service.MentorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -25,9 +27,7 @@ public class MentorController {
     }
 
     @GetMapping("{id}")
-    public Mentor getMentorDetails(@PathVariable int id){
-//        System.out.println("Mentor: " + theMentor);
-//        System.out.println("Mentor ID: " + theMentor.getMentorId());
-        return mentorService.getMentorDetailsById(id).get();
+    public ResponseEntity<Mentor>  getMentorDetails(@PathVariable int id){
+        return new ResponseEntity<>(mentorService.getMentorDetailsById(id).get(), HttpStatus.OK);
     }
 }
