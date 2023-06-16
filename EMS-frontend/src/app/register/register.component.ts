@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, FormGroupDirective, FormBuilder, Validators } from '@angular/forms';
-import { JwtService } from '../service/jwt.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterService } from '../service/register.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent {
 
-  constructor(private jwtService: JwtService, private registerservice: RegisterService, private formBuilder: FormBuilder, private route: Router, private toastr: ToastrService) { }
+  constructor(private registerservice: RegisterService, private formBuilder: FormBuilder, private route: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -36,8 +34,6 @@ export class RegisterComponent {
   })
 
   onSubmit() {
-    const token = localStorage.getItem('token');
-
     const newUser = {
       firstName: this.registerForm.value.firstName,
       lastName: this.registerForm.value.lastName,
@@ -57,6 +53,4 @@ export class RegisterComponent {
       }
     )
   }
-  
-
 }

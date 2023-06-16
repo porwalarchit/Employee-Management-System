@@ -20,6 +20,8 @@ import { AssignMenteeComponent } from './home/assign-mentee/assign-mentee.compon
 import { EmployeeReportComponent } from './home/employee-report/employee-report.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AddEmployeeReportComponent } from './home/add-employee-report/add-employee-report.component';
+import { MenteeReportComponent } from './home/mentee-report/mentee-report.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterInAProjectComponent,
     AssignMenteeComponent,
     EmployeeReportComponent,
+    AddEmployeeReportComponent,
+    MenteeReportComponent,
   ],
   imports: [
     FormsModule,

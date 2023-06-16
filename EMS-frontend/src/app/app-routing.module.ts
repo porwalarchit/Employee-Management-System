@@ -10,6 +10,7 @@ import { AuthGuardService } from './route-guard/auth-guard.service';
 import { UpdateProfileComponent } from './home/update-profile/update-profile.component';
 import { ProjectComponent } from './home/project/project.component';
 import { EmployeeReportComponent } from './home/employee-report/employee-report.component';
+import { MenteeReportComponent } from './home/mentee-report/mentee-report.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'userdata', component: UserdataComponent },
       { path: 'projects', component: ProjectComponent },
-      { path: 'reports', component: EmployeeReportComponent }
+      { path: 'reports', component: EmployeeReportComponent },
+      { path: 'mentee-report', component: MenteeReportComponent }
     ]
   },
   { path: '**', component: ErrorComponent }
