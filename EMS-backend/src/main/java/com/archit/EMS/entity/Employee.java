@@ -10,6 +10,16 @@ import lombok.ToString;
 
 import java.util.List;
 
+/**
+ * Employee Class represents an employee in the company.
+ * It contains basic fields that are related to information about an employee.
+ * Contains JPA Mappings:
+ * EmployeeDetails - OneToOne
+ * Department - OneToOne
+ * Project - ManyToMany
+ * EmployeeReport - OneToMany
+ */
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -58,7 +68,4 @@ public class Employee {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value="employee", allowSetters = true)
     private List<EmployeeReport> employeeReport;
-
-//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "employee")
-//    private Mentor mentor;
 }
