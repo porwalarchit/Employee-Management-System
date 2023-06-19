@@ -42,7 +42,6 @@ export class AddProjectComponent {
         console.log(res);
         this.taostr.success("Project added successfully", "Success");
         this.projects.push(res);
-        // this.router.navigateByUrl("/profile");
         this.ngbActiveModal.close();
       }, (err) => {
         console.log(err);
