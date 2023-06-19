@@ -30,4 +30,8 @@ public class MentorFeedback {
     @JoinColumn(name="mentor_id_fk", referencedColumnName = "mentor_id")
     @JsonIgnoreProperties(value = {"mentorFeedback"}, allowSetters = true)
     private Mentor mentor;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "report_id_fk", referencedColumnName = "report_id")
+    private EmployeeReport employeeReport;
 }
