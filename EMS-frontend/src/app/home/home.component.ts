@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MentorService } from '../service/mentor.service';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,10 @@ export class HomeComponent implements OnInit{
   userEmployee: Boolean = false;
   userAdmin: Boolean = false;
   userSuperAdmin: Boolean = false;
+  menteeExists: Boolean = false;
 
 
-  constructor(private router: Router, private taostr: ToastrService) {
+  constructor(private mentorService: MentorService, private router: Router, private taostr: ToastrService) {
   }
 
   ngOnInit() {
@@ -25,6 +27,13 @@ export class HomeComponent implements OnInit{
     }
     this.userRole = localStorage.getItem('role');
     this.checkUser();
+    
+    const empId = +localStorage.getItem('empId');
+    this.mentorService.getMenteeDetails(empId).subscribe(
+      (res)=>{
+        this.menteeExists = true;        
+      }
+    )
   }
 
   logout() {
