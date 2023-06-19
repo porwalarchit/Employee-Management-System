@@ -1,0 +1,55 @@
+<div class="model-container">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 id="myModalLabel" class="modal-title">Employee Report</h4>
+            <button type="button" (click)="closeForm()" data-bs-dismiss="modal" aria-label="Close"
+                class="btn-close"></button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group row mt-2">
+                <label classformGroup="col-12 col-form-label ">Reporting Date*</label>
+                <div class="col-12 form-control ng-untouched ng-pristine ng-valid"
+                    style="margin-left: 11px; width: 95%;">
+                    {{reportData.reportingDate}}
+                </div>
+            </div>
+            <div class="form-group row mt-2">
+                <label class="col-12 col-form-label ">Work Done</label>
+                <div class="col-12 form-control ng-untouched ng-pristine ng-valid"
+                    style="margin-left: 11px; width: 95%;">
+                    {{reportData.workDone}}
+                </div>
+            </div>
+
+            <form [formGroup]="mentorFeedbackForm" novalidate="" autocomplete="off"
+                class="ng-pristine ng-invalid ng-touched" (ngSubmit)="submitFeedback()">
+
+                <div class="form-group row mt-2">
+                    <label classformGroup="col-12 col-form-label required">Feedback*</label>
+                    <div class="col-12">
+                        <input type="text" class="form-control" formControlName="feedback" required />
+                    </div>
+                    <small *ngIf="mentorFeedbackForm.get('feedback').invalid && mentorFeedbackForm.get('feedback').touched">Please enter a feedback</small>
+                </div>
+                <div class="form-group row mt-2">
+                    <span>
+                        <label classformGroup="col-12 col-form-label" style="margin-right: 15px;">Flag</label>
+                        <label class="switch">
+                            <input type="checkbox" formControlName="flag">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+                </div>
+
+                <div class="modal-footer my-2">
+                    <button type="button" (click)="closeForm()" data-bs-dismiss="modal"
+                        class="btn btn-radius custom-gray me-2"> Close </button>
+                    <button type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-radius" [disabled]="mentorFeedbackForm.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
