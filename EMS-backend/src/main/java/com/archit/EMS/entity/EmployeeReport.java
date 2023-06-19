@@ -34,7 +34,7 @@ public class EmployeeReport {
     @JoinColumn(name = "emp_id_fk", referencedColumnName = "id")
     private Employee employee;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "feedback_id_fk", referencedColumnName = "feedback_id")
+    @OneToOne(mappedBy = "employeeReport",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"employeeReport", "mentor"})
     private MentorFeedback mentorFeedback;
 }
