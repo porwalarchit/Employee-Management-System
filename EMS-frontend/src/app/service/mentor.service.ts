@@ -17,4 +17,12 @@ export class MentorService {
   getMenteeDetails(mentorId:number){
     return this.http.get<any>(this.BASE_URL + '/api/mentor/' +mentorId);
   }
+
+  addFeedback(feedbackDetails){
+    return this.http.post<any>(this.BASE_URL + '/api/mentor/feedback', feedbackDetails);
+  }
+  
+  updateFeedback(updatedfeedbackDetails){
+    return this.http.put<any>(this.BASE_URL + '/api/mentor/feedback', updatedfeedbackDetails);
+  }
 }
