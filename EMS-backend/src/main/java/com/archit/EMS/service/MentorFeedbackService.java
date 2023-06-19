@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface MentorFeedbackService {
     Optional<MentorFeedback> getFeedback(int id);
 
-    MentorFeedback saveFeedback(MentorFeedback mentorFeedback);
+    MentorFeedback saveFeedback(Optional<MentorFeedback> mentorFeedback);
 }

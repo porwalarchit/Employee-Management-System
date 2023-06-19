@@ -17,7 +17,7 @@ public class MentorFeedbackServiceImpl implements MentorFeedbackService{
     }
 
     @Override
-    public MentorFeedback saveFeedback(MentorFeedback mentorFeedback) {
-        return mentorFeedbackRepository.save(mentorFeedback);
+    public MentorFeedback saveFeedback(Optional<MentorFeedback> mentorFeedback) {
+        return mentorFeedbackRepository.save(mentorFeedback.get());
     }
 }
