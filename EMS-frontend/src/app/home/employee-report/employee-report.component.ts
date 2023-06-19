@@ -19,6 +19,7 @@ export class EmployeeReportComponent {
     this.employeeReportService.getAllReportsById(empId).subscribe(
       (res)=>{
         this.reportData = res;
+        this.sortReportData();
         console.log(res);
       }, (err)=>{
         console.log(err);
@@ -29,5 +30,23 @@ export class EmployeeReportComponent {
   onClick(){
     this.ngbModalRef = this.modalService.open(AddEmployeeReportComponent);
     this.ngbModalRef.componentInstance.reports = this.reportData;
+  }
+
+  getRowStatusClass(reportStatus: string) {
+    if (reportStatus === 'Pending') {
+      return 'row-status-pending';
+    } else if (reportStatus === 'Accepted') {
+      return 'row-status-accepted';
+    } else if (reportStatus === 'Rejected') {
+      return 'row-status-rejected';
+    } else {
+      return '';
+    }
+  }
+
+  private sortReportData() {
+    this.reportData.sort(
+      (a, b) => new Date(b.reportingDate).getTime() - new Date(a.reportingDate).getTime()
+    );
   }
 }

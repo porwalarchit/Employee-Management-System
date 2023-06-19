@@ -1,19 +1,23 @@
 <div class="container" style="display: flex; justify-content: right; align-items: center; margin-top: 10px;">
     <button type="button" class="btn btn-success" (click)="onClick()">Add New Report</button>
 </div>
-<table class="table table-hover align-middle my-2 mx-4 bg-white" style="width: 96.5%;">
+<table class="table table-hover align-middle my-2 mx-4 bg-white" style="width: 89%;text-align: center;margin-left: 30px;">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Date</th>
         <th scope="col">Work Done</th>
         <th scope="col">Status</th>
+        <th scope="col">Feedback</th>
+        <th scope="col">Flag</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of reportData; let i = index">
+      <tr *ngFor="let data of reportData; let i = index" [ngClass]="getRowStatusClass(data.reportStatus)">
         <td>{{data.reportingDate}}</td>
         <td>{{data.workDone}}</td>
         <td>{{data.reportStatus}}</td>
+        <td>{{data.mentorFeedback?.feedback}}</td>
+        <td>{{data.reportStatus === 'Pending' ? '' : (data.mentorFeedback?.flag === true ? 'Yes' : 'No')}}</td>
       </tr>
     </tbody>
   </table>
