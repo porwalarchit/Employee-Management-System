@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -27,8 +26,8 @@ public class EmployeeReportController {
     }
 
     @GetMapping("{id}")
-    public Optional<EmployeeReport> getReport(@PathVariable int id){
-        return employeeReportService.getEmployeeReport(id);
+    public EmployeeReport getReport(@PathVariable int id){
+        return employeeReportService.getEmployeeReport(id).get();
     }
 
     @GetMapping("/all/{empId}")
