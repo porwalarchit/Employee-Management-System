@@ -1,6 +1,7 @@
 package com.archit.EMS.controller;
 
 import com.archit.EMS.entity.Mentor;
+import com.archit.EMS.exceptions.exception.EmployeeNotExists;
 import com.archit.EMS.service.EmployeeService;
 import com.archit.EMS.service.MentorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,14 @@ public class MentorController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Mentor>  getMentorDetails(@PathVariable int id){
-        return new ResponseEntity<>(mentorService.getMentorDetailsById(id).get(), HttpStatus.OK);
+    public ResponseEntity<Object> getMentorDetails(@PathVariable int id) {
+        Optional<Mentor> mentorDetails = mentorService.getMentorDetailsById(id);
+
+        if (mentorDetails.isPresent()) {
+            Mentor mentor = mentorDetails.get();
+            return ResponseEntity.ok(mentor);
+        } else {
+            throw new EmployeeNotExists("No Mentee Found");
+        }
     }
 }
